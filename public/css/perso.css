@@ -1,0 +1,200 @@
+.cv-bg{
+    background-image: url("../img/bg android white.png");
+    background-repeat: repeat;
+}
+
+@media (min-width: 1000px) {
+    .message-item{
+        margin-bottom: 25px;
+        margin-left: 40px;
+        position: relative;
+    }
+}
+
+.message-item .message-inner {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    position: relative;
+}
+
+.message-item .message-inner:before {
+    border-right: 10px solid #ddd;
+    border-style: solid;
+    border-width: 10px;
+    color: rgba(0, 0, 0, 0);
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    width: 0;
+}
+
+.message-item .message-inner:after {
+    border-right: 10px solid #fff;
+    border-style: solid;
+    border-width: 10px;
+    color: rgba(0, 0, 0, 0);
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    width: 0;
+}
+
+.message-item:before {
+    background: #ddd;
+    border-radius: 2px;
+    bottom: -30px;
+    content: "";
+    height: 100%;
+    left: -30px;
+    position: absolute;
+    width: 3px;
+}
+
+.message-item:after {
+    background: #fff;
+    border: 2px solid #236099;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    content: "";
+    height: 15px;
+    left: -36px;
+    position: absolute;
+    top: 10px;
+    width: 15px;
+}
+
+.message-item .message-head {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+.message-item .message-head .avatar {
+    margin-right: 20px;
+}
+
+.message-item .message-head .user-detail {
+    overflow: hidden;
+}
+
+.message-item .message-head .user-detail h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.message-item .message-head {
+    float: left;
+    padding: 0 15px 0 0;
+}
+
+.message-item .message-head>div {
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+}
+
+.message-item .message-head>div {
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+
+.h-divider {
+    margin: auto;
+    width: 80%;
+    position: relative;
+  }
+  
+  .h-divider .p_shadow {
+    overflow: hidden;
+    height: 20px;
+  }
+  
+  .h-divider .p_shadow:after {
+    content: '';
+    display: block;
+    margin: -25px auto 0;
+    width: 100%;
+    height: 25px;
+    border-radius: 125px/12px;
+    box-shadow: 0 0 8px black;
+  }
+
+  .p_shadow {
+    box-shadow: var(--bs-box)!important;
+}
+
+
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+.badge-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.dot {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+.profil-picture {
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.comp-tech-icon {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.autre-icon {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+h2,h4 {
+    font-family: 'Antonio', serif;
+}
+
+#nomPrenomCV {
+    font-family: 'Orbitron', serif;
+}
+
