@@ -39,8 +39,9 @@ export default class CVService {
         .catch(error => this.handleError(error));
     }
 
-    static getCVS(): Promise<CVSResponse> {
-        return fetch('https://cyrilmaquaire.com/curriculum/api/cv')
+    static getCVS(userId: number): Promise<CVSResponse> {
+        console.log(userId)
+        return fetch(`https://cyrilmaquaire.com/curriculum/api/findAllCV/${userId}`)
             .then(response =>{
                 console.log(response)// this is response from server, including all ok and error responses 
                 if(response.ok)
@@ -57,6 +58,25 @@ export default class CVService {
             .then(response => response.json())
             .then(data => this.isEmpty(data) ? null : data)
             .catch(error => this.handleError(error));
+    }
+
+    static createUser(username: string, password: string): Promise<CreateCompTechResponse> {
+        return fetch(`https://cyrilmaquaire.com/curriculum/api/user/`, {
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({username, password})
+        })
+        .then(response => {
+            console.log(response)// this is response from server, including all ok and error responses 
+            if(response.ok)
+                return response.json()
+            else{
+                console.log(response) ///error message for server should be in this response object only
+            }
+        })
+        .catch(error => this.handleError(error));
     }
 
     static createCompetenceTechnique(cvId: number): Promise<CreateCompTechResponse> {

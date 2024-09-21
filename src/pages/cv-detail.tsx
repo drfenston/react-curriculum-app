@@ -18,8 +18,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
   const [cv, setCV] = useState<CV | null>(null);
 
   useEffect(() => {
-    console.log('cv detail id ' +  match.params.id)
-    var cvId = 2
+    var cvId = 4
     if(match.params.id !== undefined) cvId = +match.params.id
     CVService.getCV(cvId).then(response => { if (response != null) {
       setCV(response.data) 
@@ -87,12 +86,12 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               </div>
 
               <h2 className="display-6 pb-2 pt-3 text-uppercase">Experience</h2>
-              {cv.experiences.map(experience => (
+              {cv.experiences.sort((a, b) => (Date.parse(a.dateDebut) < Date.parse(b.dateDebut)) ? 1 : -1).map(experience => (
                 <ExperienceCard key={experience.id} experience={experience} />
               ))}
 
               <h2 className="display-6 pb-2 pt-3 text-uppercase">Education</h2>
-              {cv.formations.map(formation => (
+              {cv.formations.sort((a, b) => (Date.parse(a.dateDebut) < Date.parse(b.dateDebut)) ? 1 : -1).map(formation => (
                 <FormationCard key={formation.id} formation={formation} />
               ))}
 

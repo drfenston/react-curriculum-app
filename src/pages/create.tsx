@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthenticationService from '../services/authentication-service';
+import CVService from "../services/cv-service";
 
 type Field = {
   value?: any,
@@ -13,7 +13,7 @@ type Form = {
   password: Field
 }
 
-const Login: FunctionComponent = () => {
+const Create: FunctionComponent = () => {
 
   const history = useHistory();
 
@@ -22,7 +22,7 @@ const Login: FunctionComponent = () => {
     password: { value: '' },
   });
 
-  const [message, setMessage] = useState<string>('Connexion');
+  const [message, setMessage] = useState<string>('Création de compte');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const fieldName: string = e.target.name;
@@ -60,14 +60,20 @@ const Login: FunctionComponent = () => {
     return newForm.username.isValid && newForm.password.isValid;
   }
 
-  const createAccount = () => {
-    history.push(`/create`)
-  }
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isFormValid = validateForm();
     if (isFormValid) {
+      CVService.createUser(form.username.value, form.password.value).then(response => {
+        if (response != null) {
+          history.push('/login');
+        } else {
+          //  showToast()
+          setMessage("Désolé, le compte n'a pas pu être créé.");
+        }
+      });
+
+      /*
       setMessage('👉 Tentative de connexion en cours ...');
       AuthenticationService.login(form.username.value, form.password.value).then(isAuthenticated => {
         if (typeof isAuthenticated.token != 'string' || isAuthenticated.token.length === 0) {
@@ -75,12 +81,10 @@ const Login: FunctionComponent = () => {
           return;
         } else {
           localStorage.setItem('token', isAuthenticated.token)
-          localStorage.setItem('user', JSON.stringify(isAuthenticated.data))
           AuthenticationService.token = isAuthenticated.token
-          AuthenticationService.user = JSON.stringify(isAuthenticated.data)
-          history.push('/cv/all/');
+          history.push('/login');
         }
-      });
+      });*/
     }
   }
 
@@ -120,10 +124,7 @@ const Login: FunctionComponent = () => {
               </div>
               <div className="text-center">
                 {/* Submit button */}
-                <button type="submit" className="btn btn-primary mt-5">Se connecter</button>
-              </div>
-              <div className='text-center mt-3'>
-                <a href="" onClick={() => createAccount()} className="card-link">Créer un compte</a>
+                <button type="submit" className="btn btn-primary mt-5">Créer un compte</button>
               </div>
             </div>
           </div>
@@ -133,4 +134,4 @@ const Login: FunctionComponent = () => {
   );
 };
 
-export default Login;
+export default Create;

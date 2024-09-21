@@ -1,5 +1,5 @@
 export default class CompetenceTechnique {
-    // 1. Typage des propiétés d'un pokémon.
+    // 1. Typage des propiétés d'une compétence technique.
     id: number;
     libelle: string;
     competence: string;
@@ -7,7 +7,7 @@ export default class CompetenceTechnique {
     percent: number;
     cvID: number;
 
-    // 2. Définition des valeurs par défaut des propriétés d'un pokémon.
+    // 2. Définition des valeurs par défaut des propriétés d'une compétence technique.
     constructor(
         id: number,
         libelle: string,
@@ -16,7 +16,7 @@ export default class CompetenceTechnique {
         percent: number,
         cvID: number
     ) {
-        // 3. Initialisation des propiétés d'un pokémons.
+        // 3. Initialisation des propiétés d'une compétence technique.
         this.id = id;
         this.libelle = libelle;
         this.competence = competence;

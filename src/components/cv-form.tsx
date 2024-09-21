@@ -69,7 +69,7 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
   }
 
   const validateForm = () => {
-
+    updateCV()
   }
   const isFormValid = (): boolean => {
     return true;
@@ -77,76 +77,9 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
 
   const [imgUrl, setImgUrl] = useState(cv.profileImage)
 
-  /**
-  const validateForm = () => {
-      let newForm: Form = form;
-  
-      // Validator url
-      if(isAddForm()) {
-  
-        const start = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/";
-        const end = ".png";
-  
-        if(!form.picture.value.startsWith(start) || !form.picture.value.endsWith(end)) {
-          const errorMsg: string = 'L\'url n\'est pas valide.';
-          const newField: Field = { value: form.picture.value, error: errorMsg, isValid: false };
-          newForm = { ...newForm, ...{ picture: newField } };
-        } else {
-          const newField: Field = { value: form.picture.value, error: '', isValid: true };
-          newForm = { ...newForm, ...{ picture: newField } };
-        }
-      }
-  
-      // Validator name
-      if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
-        const errorMsg: string = 'Le nom du pokémon est requis (1-25).';
-        const newField: Field = { value: form.name.value, error: errorMsg, isValid: false };
-        newForm = { ...newForm, ...{ name: newField } };
-      } else {
-        const newField: Field = { value: form.name.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ name: newField } };
-      }
-  
-      // Validator hp
-      if(!/^[0-9]{1,3}$/.test(form.hp.value)) {
-        const errorMsg: string = 'Les points de vie du pokémon sont compris entre 0 et 999.';
-        const newField: Field = {value: form.hp.value, error: errorMsg, isValid: false};
-        newForm = { ...newForm, ...{ hp: newField } };
-      } else {
-        const newField: Field = { value: form.hp.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ hp: newField } };
-      }
-  
-      // Validator cp
-      if(!/^[0-9]{1,2}$/.test(form.cp.value)) {
-        const errorMsg: string = 'Les dégâts du pokémon sont compris entre 0 et 99';
-        const newField: Field = {value: form.cp.value, error: errorMsg, isValid: false};
-        newForm = { ...newForm, ...{ cp: newField } };
-      } else {
-        const newField: Field = { value: form.cp.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ cp: newField } };
-      }
-  
-      setForm(newForm);
-      return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
-    }
-  
-  const isTypesValid = (type: string): boolean => {
-      if(form.types.value.length === 1 && hasType(type)) {
-          return false;
-      }
-  
-      if(form.types.value.length >= 3 && !hasType(type)) {
-          return false;
-      }
-  
-      return true;
-  }
-  **/
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     const isFormValid = validateForm();
-    // if(isFormValid){
     cv.poste = form.poste.value;
     cv.description = form.description.value;
     cv.nom = form.nom.value;
@@ -160,25 +93,15 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
     cv.mail = form.mail.value;
     cv.website = form.website.value;
     console.log(cv)
-    isEditForm ? updateCV() : addPokemon();
-    //  }
   }
 
   const isAddForm = (): boolean => {
     return !isEditForm;
   }
 
-  const addPokemon = () => {
-    //PokemonService.addPokemon(pokemon).then(() => history.push(`/pokemons/`));
-  }
-
   const updateCV = () => {
     console.log(cv.telephone)
     CVService.updateCV(cv).then(response => {/**if(!response) showToast()**/ });
-  }
-
-  const deletePokemon = () => {
-    //PokemonService.deletePokemon(pokemon).then(() => history.push(`/pokemons`))
   }
 
   const sendDataToParent = (url: string) => { // the callback. Use a better name
@@ -202,7 +125,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
 
               <div className="card-stacked p-3">
                 <div className="card-content">
-                  {/* Pokemon picture */}
                   {isAddForm() && (
                     <div className="form-group">
                       <label htmlFor="picture">Image</label>
@@ -214,7 +136,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                         </div>}
                     </div>
                   )}
-                  {/* Pokemon name */}
                   <div className="form-floating mb-3">
                     <input id="poste" name="poste" type="text" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)}></input>
                     <label htmlFor="floatingInput">Poste</label>
@@ -224,7 +145,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                       </div>
                     }
                   </div>
-                  {/* Pokemon name */}
                   <div className="form-floating mb-3">
                     <input id="description" name="description" type="text" className="form-control form-control-sm" placeholder="Description" value={form.description.value} onChange={e => handleInputChange(e)}></input>
                     <label htmlFor="description">Description</label>
@@ -234,7 +154,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                       </div>
                     }
                   </div>
-                  {/* Pokemon name */}
                   <div className='input-group mb-3'>
                     <div className="form-floating mb-3">
                       <input id="nom" name="nom" type="text" className="form-control form-control-sm" placeholder="Nom" value={form.nom.value} onChange={e => handleInputChange(e)}></input>
@@ -245,7 +164,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                         </div>
                       }
                     </div>
-                    {/* Pokemon hp */}
                     <div className="form-floating mb-3">
                       <input id="prenom" type="text" name="prenom" className="form-control form-control-sm" placeholder="Prenom" value={form.prenom.value} onChange={e => handleInputChange(e)}></input>
                       <label htmlFor="floatingInput">Prenom</label>
@@ -296,7 +214,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                       }
                     </div>
                   </div>
-                  {/* Pokemon cp */}
                   <div className='input-group mb-3'>
                   <div className="form-floating mb-3">
                     <input id="telephone" type="text" name="telephone" className="form-control form-control-sm" placeholder="Téléphone" value={form.telephone.value} onChange={e => handleInputChange(e)}></input>
@@ -345,7 +262,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
           </div>
         </div>
       </form>
-
     </div>
   );
 };

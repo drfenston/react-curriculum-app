@@ -1,12 +1,12 @@
-import Projet from "../projet";
+import User from "../user";
 
-export default class CreateProjetResponse {
+export default class CreateUserResponse {
     message: string;
-    data: Projet;
+    data: User;
     
     constructor(
         message: string,
-        data: Projet
+        data: User
     ) {
         this.message = message;
         this.data = data;

@@ -1,13 +1,18 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import CV from '../models/cv';
 import CVCard from '../components/cv-card';
 import CVService from '../services/cv-service';
+import AuthenticationService from '../services/authentication-service';
 
-const CVList: FunctionComponent = () => {
+type Params = { id: string };
+
+const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   const [cvList, setCVS] = useState<CV[]>([]);
 
   useEffect(() => {
-    CVService.getCVS().then(response => setCVS(response.data))
+    var user = JSON.parse(AuthenticationService.user)
+    CVService.getCVS(user.id).then(response => setCVS(response.data))
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 export default class Formation {
-    // 1. Typage des propiétés d'un pokémon.
+    // 1. Typage des propiétés d'une formation.
     id: number;
     dateDebut: string;
     dateFin: string;
@@ -7,7 +7,7 @@ export default class Formation {
     description: string;
     cvID: number;
 
-    // 2. Définition des valeurs par défaut des propriétés d'un pokémon.
+    // 2. Définition des valeurs par défaut des propriétés d'une formation.
     constructor(
         id: number,
         dateDebut: string,
@@ -16,7 +16,7 @@ export default class Formation {
         description: string,
         cvID: number
     ) {
-        // 3. Initialisation des propiétés d'un pokémons.
+        // 3. Initialisation des propiétés d'une formation.
         this.id = id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;

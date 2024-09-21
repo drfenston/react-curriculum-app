@@ -3,6 +3,7 @@ import CVList from './pages/cv-list';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PageNotFound from './pages/page-not-found';
 import Login from './pages/login';
+import Create from './pages/create';
 import PrivateRoute from './PrivateRoute';
 import CVDetail from './pages/cv-detail';
 import CVEdit from './pages/cv-edit';
@@ -31,7 +32,7 @@ const App: FunctionComponent = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active text-primary" aria-current="page" href="/cv/all">Liste</a>
+                                    <a className="nav-link active text-primary" aria-current="page" href="/cv/all/">Liste</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link text-primary" onClick={disconnect} href="/" >Déconnecter</a>
@@ -53,8 +54,9 @@ const App: FunctionComponent = () => {
                 {/*Le système de gestion des routes de notre application*/}
                 <Switch>
                     <Route exact path="/login" component={Login} />
+                    <Route exact path="/create" component={Create} />
                     <Route exact path="/" component={CVDetail} />
-                    <PrivateRoute exact path="/cv/all" component={CVList} />
+                    <PrivateRoute exact path="/cv/all/" component={CVList} />
                     <Route path="/cv/edit/:id" component={CVEdit} />
                     <Route path="/cv/:id" component={CVDetail} />
                     <Route component={PageNotFound} />

@@ -1,10 +1,12 @@
+import LoginData from "../models/response/loginData";
 import LoginResponse from "../models/response/loginResponse";
 
 export default class AuthenticationService {
 
     static token:string = localStorage.getItem('token') || "";
+    static user:string = localStorage.getItem('user') || "";
+
     static login(username: string, password: string): Promise<LoginResponse> {
-        console.log("Token : " + this.token)
       return fetch(`https://cyrilmaquaire.com/curriculum/api/login/`, {
             headers: { 
                 'Content-Type': 'application/json'
