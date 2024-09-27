@@ -25,6 +25,30 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
     } })
   }, [match.params.id]);
 
+      const getExperienceText = (debut: string | undefined): string | null => {
+        if (!debut) {
+          return null; // Si la date est vide, on ne renvoie rien
+        }
+    
+        const startDate = new Date(debut);
+        const currentDate = new Date();
+        
+        // Calculer la différence en années et en mois
+        const years = currentDate.getFullYear() - startDate.getFullYear();
+        const months = currentDate.getMonth() - startDate.getMonth();
+        
+        const totalMonths = years * 12 + months; // Calculer le total en mois
+    
+        if (totalMonths < 0) {
+          return null; // Moins d'un an
+        } else if (totalMonths < 12) {
+          return `${totalMonths} mois d'expérience`; // Moins d'un an mais plus de 0 mois
+        } else {
+          const yearLabel = years === 1? 'an' : 'ans';
+          return `${years} ${yearLabel} d'expérience`; // 1 an ou plus
+        }
+      };
+
   return (
     <div className="cv-bg bg-primary py-5">
       {cv ? (
@@ -34,7 +58,10 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               <img src={"https://www.cyrilmaquaire.com/curriculum/uploads/"+cv.profileImage}  className="rounded-circle mx-auto d-block profil-picture" alt="..." />
               <h2 id="nomPrenomCV" className="text-center mt-4 text-capitalize">{cv.nom + " " + cv.prenom}</h2>
               <h4 className="text-center mb-2">{cv.poste}</h4>
-              <h4 className="text-center mb-2">15 ans d'expérience</h4>
+              <div>
+        {/* Afficher uniquement si experienceText est défini */}
+        {getExperienceText(cv.debut) && <h4 className="text-center mb-2">{getExperienceText(cv.debut)}</h4>}
+      </div>
 
               <div className="h-divider">
                 <div className="p_shadow"></div>

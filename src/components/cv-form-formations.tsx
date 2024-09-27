@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import CV from "../models/cv";
 import CVService from "../services/cv-service";
 import { showToast } from "./js/jsPerso"
+import DatePickerFloatingLabel from "./ui/DatePickerFloatingLabel"; // Import du composant de date
 
 type Props = {
   cv: CV,
@@ -11,18 +12,38 @@ type Props = {
 const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
   const [formFields, setFormFields] = useState(cv.formations)
 
-  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleFormChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     let data = [...formFields];
-    console.log(event.target.name + " " + event.target.value)
-    data[index][event.target.name] = event.target.value;
-    cv.formations[index][event.target.name] = event.target.value;
-    setFormFields(data);
-  }
 
-  const submit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log(formFields)
-  }
+    // Assurer que target est bien un élément HTMLInputElement
+    const { name, value } = event.target as HTMLInputElement;
+
+    // Cast explicite pour permettre l'accès dynamique aux propriétés
+    (data[index] as Record<string, any>)[name] = value;
+    (cv.formations[index] as Record<string, any>)[name] = value;
+
+    // Mettre à jour l'état des champs du formulaire
+    setFormFields(data);
+  };
+
+  // Méthode dédiée pour gérer les changements de date
+  const handleDateChange = (name: string, date: Date | null, index: number) => {
+    let data = [...formFields];
+
+    // Cast explicite pour permettre l'accès dynamique aux propriétés
+    (data[index] as Record<string, any>)[name] = date ? date.toISOString() : ""; // Format date ISO pour la sauvegarde
+    (cv.formations[index] as Record<string, any>)[name] = date ? date.toISOString() : "";
+
+    setFormFields(data);
+  };
+
+  // Fonction intermédiaire pour lier l'index à la méthode de changement de date
+  const onDateChangeWithIndex = (index: number, name: string) => (date: Date | null) => {
+    handleDateChange(name, date, index); // Enveloppe la fonction en lui passant le nom et l'index
+  };
 
   const addFields = () => {
     CVService.createFormation(cv.id).then(response => {
@@ -49,12 +70,6 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
     });
   }
 
-  const [hover, setHover] = useState(false)
-
-  const sectionStyle = {
-    background: hover ? "#e9ecef" : "white"
-  };
-
   return (
     <div className="mt-5">
       <h2 className="d-inline me-4">Formations</h2> <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une formation</button>
@@ -69,15 +84,20 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
                 </div>
                 <div className="card-body mt-n5">
                   <div className="input-group">
+                    {/* Date de début avec DatePicker */}
+                    <DatePickerFloatingLabel
+                      label="Début de la formation"
+                      initialDate={form.dateDebut ? new Date(form.dateDebut) : null}
+                      onDateChange={onDateChangeWithIndex(index, "dateDebut")} // Utilisation de la fonction intermédiaire
+                    />
 
-                    <div className="form-floating mb-3">
-                      <input className="form-control" name='dateDebut' placeholder='Date de début' onChange={event => handleFormChange(event, index)} value={form.dateDebut} />
-                      <label htmlFor="dateDebut">Début de la formation</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                      <input className="form-control" name='dateFin' placeholder='Date de Fin' onChange={event => handleFormChange(event, index)} value={form.dateFin} />
-                      <label htmlFor="dateFin">Fin de la formation</label>
-                    </div>
+
+                    {/* Date de fin avec DatePicker */}
+                    <DatePickerFloatingLabel
+                      label="Fin de la formation"
+                      initialDate={form.dateDebut ? new Date(form.dateFin) : null}
+                      onDateChange={onDateChangeWithIndex(index, "dateFin")} // Utilisation de la fonction intermédiaire
+                    />
                   </div>
                   <div className="form-floating mb-3">
                     <input className="form-control" name='etablissement' placeholder='Etablissement' onChange={event => handleFormChange(event, index)} value={form.etablissement} />

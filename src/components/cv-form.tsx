@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import CVService from '../services/cv-service';
 import CV from '../models/cv';
 import CVFormLangues from './cv-form-langues';
@@ -8,6 +7,9 @@ import UploadAndDisplayImage from './UploadAndDisplayImage';
 import CVFormCompTech from './cv-form-compTech';
 import CVFormAutres from './cv-form-autres';
 import CVFormExperiences from './cv-form-experiences';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import DatePickerFloatingLabel from './ui/DatePickerFloatingLabel';
 
 type Props = {
   cv: CV,
@@ -24,6 +26,7 @@ type Field = {
 type Form = {
   picture: Field,
   poste: Field,
+  debut: Field,
   description: Field,
   nom: Field,
   prenom: Field,
@@ -42,6 +45,7 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
   const [form, setForm] = useState<Form>({
     picture: { value: cv.poste, isValid: true },
     poste: { value: cv.poste, isValid: true },
+    debut: { value: cv.debut, isValid: true },
     description: { value: cv.description, isValid: true },
     nom: { value: cv.nom, isValid: true },
     prenom: { value: cv.prenom, isValid: true },
@@ -55,8 +59,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
     website: { value: cv.website, isValid: true }
   })
 
-  const history = useHistory()
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fieldName: string = e.target.name;
     const fieldValue: string = e.target.value;
@@ -68,20 +70,14 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
     setForm({ ...form, ...newField })
   }
 
-  const validateForm = () => {
-    updateCV()
-  }
-  const isFormValid = (): boolean => {
-    return true;
-  }
-
   const [imgUrl, setImgUrl] = useState(cv.profileImage)
 
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    const isFormValid = validateForm();
+    updateCV()
     cv.poste = form.poste.value;
     cv.description = form.description.value;
+    cv.debut = debutDate;
     cv.nom = form.nom.value;
     cv.prenom = form.prenom.value;
     cv.adresse1 = form.adresse1.value;
@@ -100,19 +96,28 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
   }
 
   const updateCV = () => {
-    console.log(cv.telephone)
     CVService.updateCV(cv).then(response => {/**if(!response) showToast()**/ });
   }
 
-  const sendDataToParent = (url: string) => { // the callback. Use a better name
+  const sendDataToParent = () => { // the callback. Use a better name
     setImgUrl(cv.profileImage)
+  };
+
+  // Initialiser avec la date de cv.debut si elle existe, sinon une chaîne vide
+  const [debutDate, setDebutDate] = useState<string>(cv.debut ? new Date(cv.debut).toISOString() : "");
+
+  // Fonction de gestion du changement de date
+  const handleDebutDateChange = (newDate: Date | null) => {
+    if (newDate != null) {
+      setDebutDate(newDate.toISOString());
+    } else {
+      setDebutDate("");
+    }
   };
 
   return (
 
     <div>
-
-
       <form onSubmit={e => handleSubmit(e)}>
         <div className="row">
           <div className="col s12 m4 ">
@@ -121,7 +126,6 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                 <img src={"https://www.cyrilmaquaire.com/curriculum/uploads/" + imgUrl} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
               </div>
               <UploadAndDisplayImage cv={cv} sendDataToParent={sendDataToParent}></UploadAndDisplayImage>
-
 
               <div className="card-stacked p-3">
                 <div className="card-content">
@@ -136,15 +140,26 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                         </div>}
                     </div>
                   )}
-                  <div className="form-floating mb-3">
-                    <input id="poste" name="poste" type="text" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)}></input>
-                    <label htmlFor="floatingInput">Poste</label>
-                    {form.poste.error &&
-                      <div className="card-panel red accent-1">
-                        {form.poste.error}
-                      </div>
-                    }
+
+                  <div className='input-group mb-3'>
+                    <div className="form-floating mb-3">
+                      <input id="poste" name="poste" type="text" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)}></input>
+                      <label htmlFor="floatingInput">Poste</label>
+                      {form.poste.error &&
+                        <div className="card-panel red accent-1">
+                          {form.poste.error}
+                        </div>
+                      }
+                    </div>
+
+                    <DatePickerFloatingLabel
+                      label="Début de carrière" // Label personnalisé
+                      initialDate={cv.debut ? new Date(cv.debut) : null} // Date initiale (peut être nulle ou une date)
+                      onDateChange={handleDebutDateChange} // Callback pour récupérer la date sélectionnée
+                    />
+
                   </div>
+
                   <div className="form-floating mb-3">
                     <input id="description" name="description" type="text" className="form-control form-control-sm" placeholder="Description" value={form.description.value} onChange={e => handleInputChange(e)}></input>
                     <label htmlFor="description">Description</label>
@@ -215,35 +230,35 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                     </div>
                   </div>
                   <div className='input-group mb-3'>
-                  <div className="form-floating mb-3">
-                    <input id="telephone" type="text" name="telephone" className="form-control form-control-sm" placeholder="Téléphone" value={form.telephone.value} onChange={e => handleInputChange(e)}></input>
-                    <label htmlFor="floatingInput">Téléphone</label>
-                    {form.telephone.error &&
-                      <div className="card-panel red accent-1">
-                        {form.telephone.error}
-                      </div>
-                    }
-                  </div>
+                    <div className="form-floating mb-3">
+                      <input id="telephone" type="text" name="telephone" className="form-control form-control-sm" placeholder="Téléphone" value={form.telephone.value} onChange={e => handleInputChange(e)}></input>
+                      <label htmlFor="floatingInput">Téléphone</label>
+                      {form.telephone.error &&
+                        <div className="card-panel red accent-1">
+                          {form.telephone.error}
+                        </div>
+                      }
+                    </div>
 
-                  <div className="form-floating mb-3">
-                    <input id="mail" name="mail" type="text" className="form-control form-control-sm" placeholder="Adresse Email" value={form.mail.value} onChange={e => handleInputChange(e)}></input>
-                    <label htmlFor="floatingInput">Adresse Email</label>
-                    {form.mail.error &&
-                      <div className="card-panel red accent-1">
-                        {form.mail.error}
-                      </div>
-                    }
-                  </div>
+                    <div className="form-floating mb-3">
+                      <input id="mail" name="mail" type="text" className="form-control form-control-sm" placeholder="Adresse Email" value={form.mail.value} onChange={e => handleInputChange(e)}></input>
+                      <label htmlFor="floatingInput">Adresse Email</label>
+                      {form.mail.error &&
+                        <div className="card-panel red accent-1">
+                          {form.mail.error}
+                        </div>
+                      }
+                    </div>
 
-                  <div className="form-floating mb-3">
-                    <input id="website" name="website" type="text" className="form-control form-control-sm" placeholder="Site web" value={form.website.value} onChange={e => handleInputChange(e)}></input>
-                    <label htmlFor="floatingInput">Site Web</label>
-                    {form.website.error &&
-                      <div className="card-panel red accent-1">
-                        {form.website.error}
-                      </div>
-                    }
-                  </div>
+                    <div className="form-floating mb-3">
+                      <input id="website" name="website" type="text" className="form-control form-control-sm" placeholder="Site web" value={form.website.value} onChange={e => handleInputChange(e)}></input>
+                      <label htmlFor="floatingInput">Site Web</label>
+                      {form.website.error &&
+                        <div className="card-panel red accent-1">
+                          {form.website.error}
+                        </div>
+                      }
+                    </div>
                   </div>
                   <CVFormCompTech cv={cv} isEditForm={true}></CVFormCompTech>
                   <CVFormExperiences cv={cv} isEditForm={true}></CVFormExperiences>

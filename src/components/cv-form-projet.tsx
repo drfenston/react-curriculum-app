@@ -10,12 +10,22 @@ type Props = {
 const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
   const [formFields, setFormFields] = useState(experience.projets)
 
-  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleFormChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     let data = [...formFields];
-    data[index][event.target.name] = event.target.value;
-    experience.projets[index][event.target.name] = event.target.value;
+
+    // Assurer que target est bien un élément HTMLInputElement
+    const { name, value } = event.target as HTMLInputElement;
+
+    // Cast explicite pour permettre l'accès dynamique aux propriétés
+    (data[index] as Record<string, any>)[name] = value;
+    (experience.projets[index] as Record<string, any>)[name] = value;
+
+    // Mettre à jour l'état des champs du formulaire
     setFormFields(data);
-  }
+  };
 
   const addFields = () => {
     CVService.createProjet(experience.id).then(response => {
@@ -32,7 +42,6 @@ const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
     let data = [...formFields];
 
     CVService.deleteProjet(data[index].id).then(response => {
-      console.log("coucou1")
       if (response != null) {
         data.splice(index, 1)
         experience.projets.splice(index, 1)
@@ -42,12 +51,6 @@ const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
       }
     });
   }
-
-  const [hover, setHover] = useState(false)
-
-  const sectionStyle = {
-    background: hover ? "#e9ecef" : "white"
-  };
 
   return (
     <div className="mt-5">

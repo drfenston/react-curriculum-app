@@ -1,0 +1,64 @@
+/* Correction du style du wrapper */
+.date-picker-wrapper {
+  display: block;
+  width: 100%; /* Assure que l'input occupe toute la largeur */
+}
+
+/* Correction pour la taille de l'input */
+.date-picker-input {
+  width: 100%;
+  height: calc(2.7em + 0.75rem + 2px); /* Hauteur par défaut des champs Bootstrap */
+  padding: 0.375rem 0.75rem; /* Padding interne similaire aux autres champs */
+  font-size: 1rem; /* Taille de la police uniforme */
+  line-height: 1.5; /* Hauteur de ligne pour uniformiser avec Bootstrap */
+  box-sizing: border-box; /* S'assure que tout est bien calculé */
+}
+
+/* Styles pour le label flottant */
+.position-relative {
+  position: relative;
+}
+
+.floating-label {
+  position: absolute;
+  top: 50%; /* Centré verticalement dans l'input au départ */
+  left: 12px;  /* Ajuste la marge à gauche */
+  transition: all 0.3s ease; /* Transition douce */
+  pointer-events: none; /* Empêche de cliquer sur le label */
+  color: #6c757d; /* Couleur grise */
+  transform: none; /* Empêche le centrage vertical lors du déplacement */
+  padding: 0 4px;
+}
+
+.filled {
+  top: -10px; /* Le label monte quand l'input est focusé ou rempli */
+  left: 10px; /* Ajustement horizontal */
+  font-size: 12px; /* Réduction de la taille du texte */
+  color: #696969a6; /* Garde la même couleur grise */
+  transform: translateY(-20%); /* Centrage vertical */
+  line-height: 1; /* S'assure que le fond s'ajuste bien à la taille du texte */
+  border-radius: 0.25rem;
+}
+
+/* Comportement au focus ou quand l'input est rempli */
+.form-control:focus + .floating-label{
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #6c757d;
+  transition: 0.2s ease all;
+  transform: translateY(-50%);
+  line-height: 1; /* S'assure que le fond s'ajuste bien à la taille du texte */
+  border-radius: 0.25rem;
+}
+
+.form-control.filled + .floating-label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #6c757d;
+  transition: 0.2s ease all;
+  transform: translateY(-50%);
+  line-height: 1; /* S'assure que le fond s'ajuste bien à la taille du texte */
+  border-radius: 0.25rem;
+}

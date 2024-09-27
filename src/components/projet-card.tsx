@@ -1,23 +1,11 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import Projet from "../models/projet";
-import { useHistory } from "react-router-dom";
 type Props = {
   projet: Projet,
   borderColor?: string
 };
 
 const ProjetCard: FunctionComponent<Props> = ({ projet, borderColor = '#009688' }) => {
-
-  const [color, setColor] = useState<string>();
-  const history = useHistory();
-
-  const showBoder = () => {
-    setColor(borderColor);
-  }
-
-  const hideBoder = () => {
-    setColor('#f5f5f5');
-  }
 
   return (
     <div>

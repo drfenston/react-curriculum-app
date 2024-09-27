@@ -11,12 +11,16 @@ const CVFormAutres: FunctionComponent<Props> = ({ cv }) => {
   const [formFields, setFormFields] = useState(cv.autres)
 
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    let data = [...formFields];
-    console.log(event.target.name + " " + event.target.value)
-    data[index][event.target.name] = event.target.value;
-    cv.autres[index][event.target.name] = event.target.value;
-    setFormFields(data);
-  }
+  let data = [...formFields];
+  
+  const target = event.target;
+  // Cast explicite pour permettre l'accès dynamique
+  (data[index] as Record<string, any>)[target.name] = target.value;
+  (cv.autres[index] as Record<string, any>)[target.name] = target.value;
+  
+  setFormFields(data);
+};
+
 
   const submit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();

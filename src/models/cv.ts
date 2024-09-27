@@ -8,6 +8,7 @@ export default class CV {
     id: number;
     profileImage: string;
     poste: string;
+    debut: string;
     description: string;
     nom: string;
     prenom: string;
@@ -30,6 +31,7 @@ export default class CV {
         id: number,
         profileImage: string,
         poste: string,
+        debut: string,
         description: string,
         nom: string,
         prenom: string,
@@ -51,6 +53,7 @@ export default class CV {
         this.id = id;
         this.profileImage = profileImage;
         this.poste = poste;
+        this.debut = debut;
         this.description = description;
         this.nom = nom;
         this.prenom = prenom;

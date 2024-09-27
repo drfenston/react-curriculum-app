@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import CV from "../models/cv";
 import CVService from "../services/cv-service";
 
@@ -10,18 +10,22 @@ type Props = {
 const CVFormCompTech: FunctionComponent<Props> = ({ cv }) => {
   const [formFields, setFormFields] = useState(cv.competenceTechniques)
   
-  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleFormChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     let data = [...formFields];
-    console.log(event.target.name + " " + event.target.value)
-    data[index][event.target.name] = event.target.value;
-    cv.competenceTechniques[index][event.target.name] = event.target.value;
-    setFormFields(data);
-  }
 
-  const submit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log(formFields)
-  }
+    // Assurer que target est bien un élément HTMLInputElement
+    const { name, value } = event.target as HTMLInputElement;
+
+    // Cast explicite pour permettre l'accès dynamique aux propriétés
+    (data[index] as Record<string, any>)[name] = value;
+    (cv.competenceTechniques[index] as Record<string, any>)[name] = value;
+
+    // Mettre à jour l'état des champs du formulaire
+    setFormFields(data); 
+  };
 
   const addFields = () => {
     CVService.createCompetenceTechnique(cv.id).then(response => {
@@ -47,12 +51,6 @@ const CVFormCompTech: FunctionComponent<Props> = ({ cv }) => {
       }
     });
   }
-
-  const [hover, setHover] = useState(false)
-
-  const sectionStyle = {
-    background: hover ? "#e9ecef" : "white"
-  };
 
   return (
     <div className="mt-5">

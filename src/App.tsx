@@ -57,7 +57,7 @@ const App: FunctionComponent = () => {
                     <Route exact path="/create" component={Create} />
                     <Route exact path="/" component={CVDetail} />
                     <PrivateRoute exact path="/cv/all/" component={CVList} />
-                    <Route path="/cv/edit/:id" component={CVEdit} />
+                    <PrivateRoute path="/cv/edit/:id" component={CVEdit} />
                     <Route path="/cv/:id" component={CVDetail} />
                     <Route component={PageNotFound} />
                 </Switch>
