@@ -53,41 +53,43 @@ const CVFormLangues: FunctionComponent<Props> = ({ cv }) => {
   }
 
   return (
-    <div className="mt-5">
-      <h2 className="d-inline me-4">Langues</h2> <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une langue</button>
+    <div className="container border border-top-0 pt-3">
+      <div className="p-3">
+        <h2 className="d-inline me-4">Langues</h2> <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une langue</button>
 
-      <div className="row row-cols-3 mt-2">
+        <div className="row row-cols-3 mt-2">
 
-        {formFields.map((form, index) => {
-          return (
-            <div className="col-sm-4" key={index}>
-              <div className="card card-hover-shadow mt-4">
+          {formFields.map((form, index) => {
+            return (
+              <div className="col-sm-4" key={index}>
+                <div className="card card-hover-shadow mt-4">
 
-                <div className="card-header border-bottom-0 text-end">
-                  <button className="btn btn-outline-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick={() => removeFields(index)}><i className="bi bi-trash"></i> Supprimer la langue</button>
-                </div>
-
-                <div className="card-body mt-n5">
-                  <div className="form-floating mb-3">
-                    <input className="form-control" name='origine' placeholder='Origine' onChange={event => handleFormChange(event, index)} value={form.origine} />
-                    <label htmlFor="origine">Langue parlée</label>
+                  <div className="card-header border-bottom-0 text-end">
+                    <button className="btn btn-outline-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick={() => removeFields(index)}><i className="bi bi-trash"></i> Supprimer la langue</button>
                   </div>
 
-                  <div className="form-floating mb-3">
-                    <input className="form-control" name='niveau' placeholder='Niveau' onChange={event => handleFormChange(event, index)} value={form.niveau} />
-                    <label htmlFor="niveau">Description</label>
-                  </div>
+                  <div className="card-body mt-n5">
+                    <div className="form-floating mb-3">
+                      <input className="form-control" name='origine' placeholder='Origine' onChange={event => handleFormChange(event, index)} value={form.origine} />
+                      <label htmlFor="origine">Langue parlée</label>
+                    </div>
 
-                  <div className="col-12">
-                    <label htmlFor="customRange2" className="form-label">Niveau (0-100)</label>
-                    <input type="range" className="form-range" name='percent' min="0" max="100" step="10" onChange={event => handleFormChange(event, index)} value={form.percent} />
-                  </div>
+                    <div className="form-floating mb-3">
+                      <input className="form-control" name='niveau' placeholder='Niveau' onChange={event => handleFormChange(event, index)} value={form.niveau} />
+                      <label htmlFor="niveau">Description</label>
+                    </div>
 
+                    <div className="col-12">
+                      <label htmlFor="customRange2" className="form-label">Niveau (0-100)</label>
+                      <input type="range" className="form-range" name='percent' min="0" max="100" step="10" onChange={event => handleFormChange(event, index)} value={form.percent} />
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
     </div>
   );
