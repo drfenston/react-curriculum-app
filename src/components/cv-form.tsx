@@ -120,27 +120,33 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
     <div className='p-5'>
       <form onSubmit={e => handleSubmit(e)}>
 
-        <ul className="nav nav-tabs" role="tablist">
-          <li className="nav-item" role="presentation">
-            <a className="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Profile</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab" aria-controls="simple-tabpanel-1" aria-selected="false">Compétences techniques</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Expériences</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-3" data-bs-toggle="tab" href="#simple-tabpanel-3" role="tab" aria-controls="simple-tabpanel-3" aria-selected="false">Langues</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-4" data-bs-toggle="tab" href="#simple-tabpanel-4" role="tab" aria-controls="simple-tabpanel-4" aria-selected="false">Formations</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-5" data-bs-toggle="tab" href="#simple-tabpanel-5" role="tab" aria-controls="simple-tabpanel-5" aria-selected="false">Activités</a>
-          </li>
-          <button type="submit" className="ms-5 btn btn-primary">Enregistrer les changements</button>
-        </ul>
+        <div className="position-relative">
+          <ul className="nav nav-tabs" role="tablist">
+            <li className="nav-item" role="presentation">
+              <a className="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Profile</a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a className="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab" aria-controls="simple-tabpanel-1" aria-selected="false">Compétences techniques</a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a className="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Expériences</a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a className="nav-link" id="simple-tab-3" data-bs-toggle="tab" href="#simple-tabpanel-3" role="tab" aria-controls="simple-tabpanel-3" aria-selected="false">Langues</a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a className="nav-link" id="simple-tab-4" data-bs-toggle="tab" href="#simple-tabpanel-4" role="tab" aria-controls="simple-tabpanel-4" aria-selected="false">Formations</a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a className="nav-link" id="simple-tab-5" data-bs-toggle="tab" href="#simple-tabpanel-5" role="tab" aria-controls="simple-tabpanel-5" aria-selected="false">Activités</a>
+            </li>
+          </ul>
+
+          <div className="position-fixed bottom-0 end-0 p-3">
+            <button type="submit" className="btn btn-primary">Enregistrer les changements</button>
+          </div>
+        </div>
+
 
         <div className="tab-content" id="tab-content">
           <div className="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
@@ -309,7 +315,7 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
         </div>
         <div className="card-action center pt-5">
           {/* Submit button */}
-          
+
         </div>
       </form>
     </div>

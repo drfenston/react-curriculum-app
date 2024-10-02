@@ -6,18 +6,9 @@ type Props = {
     borderColor?: string
 };
 
-const CVCard: FunctionComponent<Props> = ({ cv, borderColor = '#009688' }) => {
+const CVCard: FunctionComponent<Props> = ({ cv }) => {
 
-    const [color, setColor] = useState<string>();
     const history = useHistory();
-
-    const showBoder = () => {
-        setColor(borderColor);
-    }
-
-    const hideBoder = () => {
-        setColor('#f5f5f5');
-    }
 
     const goToCV = (id: number) => {
         history.push(`/cv/${id}`)
@@ -28,15 +19,29 @@ const CVCard: FunctionComponent<Props> = ({ cv, borderColor = '#009688' }) => {
     }
 
     return (
-        <div className="card me-3" style={{ width: "18rem" }} onMouseEnter={showBoder} onMouseLeave={hideBoder}>
-            <div className="card-body">
-                <h5 className="card-title">{cv.poste}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{cv.nom} {cv.prenom}</h6>
-                <p className="card-text">{cv.description}</p>
-                <a href="" onClick={() => goToCV(cv.id)} className="card-link">Voir</a>
-                <a href="" onClick={() => editCV(cv.id)} className="card-link">Editer</a>
+        <div className="col-md-4">
+            <div className="card h-100 d-flex flex-column">
+                <div className="card-body flex-grow-1">
+                    <h5 className="card-title">{cv.poste}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">{cv.nom} {cv.prenom}</h6>
+                    <p className="card-text truncate">{cv.description}</p>
+                </div>
+                <div className="card-footer d-flex justify-content-between">
+                    <a href="" onClick={() => goToCV(cv.id)} className="card-link no-underline">
+                        <i className="bi bi-eye-fill"></i> Voir
+                    </a>
+                    <a href="" onClick={() => editCV(cv.id)} className="card-link no-underline">
+                        <i className="bi bi-pencil-fill"></i> Editer
+                    </a>
+                </div>
             </div>
         </div>
+
+
+
+
+
+
     );
 }
 

@@ -7,7 +7,7 @@ type Props = {
 };
 
 const AutreCard: FunctionComponent<Props> = ({ autre }) => {
-  const placeholderImage = 'https://www.cyrilmaquaire.com/curriculum/uploads/Dessin.png'
+  const placeholderImage = 'https://www.cyrilmaquaire.com/curriculum/uploads/activity_default.png'
   const image = "https://www.cyrilmaquaire.com/curriculum/uploads/" + autre.libelle + ".png"
   
   return (

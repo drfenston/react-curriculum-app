@@ -1,4 +1,3 @@
-import LoginData from "../models/response/loginData";
 import LoginResponse from "../models/response/loginResponse";
 
 export default class AuthenticationService {

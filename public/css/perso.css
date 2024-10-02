@@ -1,10 +1,11 @@
-.cv-bg{
+.cv-bg {
     background-image: url("../img/bg android white.png");
     background-repeat: repeat;
+    min-height: 100vh;
 }
 
 @media (min-width: 1000px) {
-    .message-item{
+    .message-item {
         margin-bottom: 25px;
         margin-left: 40px;
         position: relative;
@@ -114,14 +115,14 @@
     margin: auto;
     width: 80%;
     position: relative;
-  }
-  
-  .h-divider .p_shadow {
+}
+
+.h-divider .p_shadow {
     overflow: hidden;
     height: 20px;
-  }
-  
-  .h-divider .p_shadow:after {
+}
+
+.h-divider .p_shadow:after {
     content: '';
     display: block;
     margin: -25px auto 0;
@@ -129,13 +130,23 @@
     height: 25px;
     border-radius: 125px/12px;
     box-shadow: 0 0 8px black;
-  }
-
-  .p_shadow {
-    box-shadow: var(--bs-box)!important;
 }
 
+.p_shadow {
+    box-shadow: var(--bs-box) !important;
+}
 
+.truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* Nombre de lignes à afficher */
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    /* Ajuste la hauteur maximale en fonction de la ligne */
+}
 
 .btn-circle.btn-xl {
     width: 70px;
@@ -171,8 +182,14 @@
     height: 70px;
     width: 70px;
     border-radius: 50%;
+    display: flex;
+    /* Utiliser Flexbox */
+    justify-content: center !important;
+    /* Centre horizontalement */
+    align-items: center !important;
+    /* Centre verticalement */
     text-align: center;
-    display: inline-block;
+    /* Utile pour centrer le texte, s'il y en a */
 }
 
 .profil-picture {
@@ -191,10 +208,42 @@
     height: 80px !important;
 }
 
-h2,h4 {
+h2,
+h4 {
     font-family: 'Antonio', serif;
 }
 
 #nomPrenomCV {
     font-family: 'Orbitron', serif;
+}
+
+.quote-text {
+    position: relative;
+    padding: 0px;
+    font-size: 1.25rem;
+    /* Ajuste la taille selon tes besoins */
+}
+
+.quote-text::before {
+    content: "“";
+    /* Guillemets ouvrants */
+    font-size: 2rem;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    font-family: 'Antonio', serif;
+}
+
+.quote-text::after {
+    content: "”";
+    /* Guillemets fermants */
+    font-size: 2rem;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    font-family: 'Antonio', serif;
+}
+
+.no-underline {
+    text-decoration: none;
 }
