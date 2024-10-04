@@ -10,8 +10,17 @@ import CreateAutreResponse from "../models/response/createAutreResponse";
 import CreateExperienceResponse from "../models/response/createExperienceResponse";
 import CreateProjetResponse from "../models/response/createProjetResponse";
 import CreateCvResponse from "../models/response/createCvResponse";
+import LatesteApkResponse from "../models/response/latestApkResponse";
 
 export default class CVService {
+
+    static latestApk(): Promise<LatesteApkResponse> {
+        return fetch("https://cyrilmaquaire.com/curriculum/api/latest-apk", { 
+            method: 'GET'
+        })
+        .then(async (response) => {if(response.ok) return response.json()})
+        .catch((error) => this.handleError(error));
+    }
 
     static uploadProfileImage(data: FormData): Promise<UploadProfileImageResponse> {
         return fetch("https://cyrilmaquaire.com/curriculum/api/uploadProfileImage", { 

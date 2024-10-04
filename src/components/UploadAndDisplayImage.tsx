@@ -37,7 +37,7 @@ const UploadAndDisplayImage: FunctionComponent<Props> = ({ cv, sendDataToParent 
     return (
         <div className="row text-center mx-3 mt-5">
             <div className="card p-3">
-                <h5>Choisissez une image de profil</h5>
+                <h4>Choisissez une image de profil</h4>
                 <input className="form-control" type="file" id="formFile" onChange={(e) => handleSelectImage(e)} />
             </div>
         </div>

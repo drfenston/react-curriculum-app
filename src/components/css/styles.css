@@ -62,3 +62,19 @@
   line-height: 1; /* S'assure que le fond s'ajuste bien à la taille du texte */
   border-radius: 0.25rem;
 }
+
+/* Appliquer à tous les inputs avec form-control */
+.form-control {
+  border-color: var(--bs-primary) !important;
+  color: var(--bs-primary) !important;
+  background-color: #f0f8ff !important;
+}
+
+.form-control:focus {
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+}
+
+.form-floating label {
+  color: var(--bs-primary) !important;
+}

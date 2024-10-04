@@ -85,7 +85,7 @@ const Login: FunctionComponent = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container p-5 bg-white shadow rounded mt-5">
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="row col-6 pt-5 mx-auto">
           <div className="card bg-body-tertiary">

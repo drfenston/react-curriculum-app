@@ -16,10 +16,10 @@ const CVEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   }, [match.params.id]);
 
   return (
-    <div className='container'>
+    <div className='container p-5 bg-white shadow rounded mt-5 h-100'>
       {cv ? (
         <div className="row">
-          <h2 className="h2 text-center py-3">Éditer {cv.nom} {cv.prenom}</h2>
+          <h2 className="h2 text-center py-3">Éditer le CV de {cv.nom} {cv.prenom}</h2>
           <CVForm cv={cv} isEditForm={true}></CVForm>
 
           <div className="toast-container position-fixed bottom-0 end-0 p-3">

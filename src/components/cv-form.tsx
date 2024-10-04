@@ -117,8 +117,10 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
 
   return (
 
-    <div className='p-5'>
       <form onSubmit={e => handleSubmit(e)}>
+          <div className="p-3 text-center ">
+            <button type="submit" className="btn btn-primary">Enregistrer les changements</button>
+          </div>
 
         <div className="position-relative">
           <ul className="nav nav-tabs" role="tablist">
@@ -142,9 +144,7 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
             </li>
           </ul>
 
-          <div className="position-fixed bottom-0 end-0 p-3">
-            <button type="submit" className="btn btn-primary">Enregistrer les changements</button>
-          </div>
+          
         </div>
 
 
@@ -194,16 +194,23 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
 
                           </div>
 
-                          <div className="form-floating mb-3">
-
-                            <input id="description" name="description" className="form-control form-control-sm" placeholder="Description" value={form.description.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="description">Description</label>
-                            {form.description.error &&
-                              <div className="card-panel red accent-1">
-                                {form.description.error}
-                              </div>
-                            }
-                          </div>
+                          <div className="form-floating mb-3" style={{ flexGrow: 1 }}> {/* flexGrow appliqué directement */}
+    <textarea 
+      id="description" 
+      name="description" 
+      className="form-control form-control-sm" 
+      placeholder="Description" 
+      value={form.description.value} 
+      onChange={e => handleInputChange(e)} 
+      style={{ height: '100%' }}  
+    ></textarea>
+    <label htmlFor="description">Description</label>
+    {form.description.error &&
+      <div className="card-panel red accent-1">
+        {form.description.error}
+      </div>
+    }
+  </div>
 
                         </div>
 
@@ -313,12 +320,8 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
           <div className="tab-pane" id="simple-tabpanel-4" role="tabpanel" aria-labelledby="simple-tab-4"><CVFormFormations cv={cv} isEditForm={true}></CVFormFormations></div>
           <div className="tab-pane" id="simple-tabpanel-5" role="tabpanel" aria-labelledby="simple-tab-5"><CVFormAutres cv={cv} isEditForm={true}></CVFormAutres></div>
         </div>
-        <div className="card-action center pt-5">
-          {/* Submit button */}
-
-        </div>
+        
       </form>
-    </div>
   );
 };
 

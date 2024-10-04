@@ -52,7 +52,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
   };
 
   return (
-    <div className="cv-bg bg-primary py-5">
+    <div className="cv-bg bg-primary pt-5">
       {cv ? (
         <div className="container py-5 bg-white shadow rounded">
           <div className="row">

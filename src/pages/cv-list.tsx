@@ -78,9 +78,8 @@ const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   }, []);
 
   return (
-    <div>
-      <div className="container">
-        <div className="row mt-5 justify-content-center">
+      <div className="container p-5 bg-white shadow rounded mt-5">
+        <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="card h-100">
               <div className="card-body">
@@ -122,7 +121,6 @@ const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
         )}
 
       </div>
-    </div>
   );
 }
 
