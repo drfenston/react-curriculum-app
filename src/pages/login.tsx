@@ -100,7 +100,7 @@ const Login: FunctionComponent = () => {
                 {/* Field username */}
                 <div className="form-floating mb-3">
                   <input id="username" type="text" name="username" className="form-control form-control-sm" placeholder="Identifiant" value={form.username.value} onChange={e => handleInputChange(e)}></input>
-                  <label htmlFor="floatingInput">Identifiant</label>
+                  <label htmlFor="username">Identifiant</label>
                   {/* error */}
                   {form.username.error &&
                     <div className="card-panel red accent-1">
@@ -110,7 +110,7 @@ const Login: FunctionComponent = () => {
                 {/* Field password */}
                 <div className="form-floating mb-3">
                   <input id="password" type="password" name="password" className="form-control form-control-sm" placeholder="Password" value={form.password.value} onChange={e => handleInputChange(e)}></input>
-                  <label htmlFor="floatingInput">Mot de passe</label>
+                  <label htmlFor="password">Mot de passe</label>
                   {/* error */}
                   {form.password.error &&
                     <div className="card-panel red accent-1">

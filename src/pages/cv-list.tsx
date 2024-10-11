@@ -91,7 +91,7 @@ const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
                   {/* Field poste */}
                   <div className="form-floating mb-3">
                     <input id="poste" type="text" name="poste" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)} />
-                    <label htmlFor="floatingInput">Poste</label>
+                    <label htmlFor="poste">Poste</label>
                     {/* error */}
                     {form.poste.error &&
                       <div className="card-panel red accent-1">
