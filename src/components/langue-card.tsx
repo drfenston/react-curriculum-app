@@ -15,7 +15,7 @@ const LangueCard: FunctionComponent<Props> = ({ langue}) => {
       </div>
       <div className="col-6 p-inline">
         <div className="progress mb-0" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-          <div className="progress-bar" style={{ width: langue.percent+'%' }} />
+          <div className="progress-bar bg-perso" style={{ width: langue.percent+'%' }} />
         </div>
         {langue.niveau}
       </div>

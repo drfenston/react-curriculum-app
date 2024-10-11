@@ -6,12 +6,13 @@ import './../css/styles.css';  // Fichier CSS pour les styles personnalisés
 
 // Définition de l'interface pour les props
 interface DatePickerFloatingLabelProps {
+    id:string;
     label: string; // Label doit être une chaîne de caractères
     initialDate?: Date | null; // Date initiale, optionnelle
     onDateChange?: (date: Date | null) => void; // Callback pour la date sélectionnée
   }
   
-  const DatePickerFloatingLabel: React.FC<DatePickerFloatingLabelProps> = ({ label, initialDate, onDateChange }) => {
+  const DatePickerFloatingLabel: React.FC<DatePickerFloatingLabelProps> = ({ id, label, initialDate, onDateChange }) => {
   const [selectedDate, setSelectedDate] = useState(initialDate || null);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -35,13 +36,13 @@ interface DatePickerFloatingLabelProps {
         onChange={handleDateChange}
         dateFormat="dd/MM/yyyy"
         className="form-control date-picker-input" // Utilisation de 'form-control' sans sm pour correspondre aux autres inputs
-        id="datePicker"
+        id={id}
         onFocus={handleFocus}
         onBlur={handleBlur}
         wrapperClassName="date-picker-wrapper"
       />
       <label
-        htmlFor="datePicker"
+        htmlFor={id}
         className={`floating-label ${isFocused || selectedDate ? 'filled' : ''}`}
       >
         {label}

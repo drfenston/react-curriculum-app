@@ -55,7 +55,7 @@ const CVFormCompTech: FunctionComponent<Props> = ({ cv }) => {
   return (
     <div className="container border border-top-0 pt-3">
       <div className="p-3">
-        <h2 className="d-inline me-3 mt-3">Compétences Techniques</h2>  <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une compétence technique</button>
+        <h2 className="d-inline me-3 mt-3">Compétences Techniques</h2>  <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une compétence technique</button>
 
         <div className="row row-cols-3 mt-2">
 
@@ -70,18 +70,18 @@ const CVFormCompTech: FunctionComponent<Props> = ({ cv }) => {
 
                   <div className="card-body mt-n5">
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='libelle' placeholder='Libellé' onChange={event => handleFormChange(event, index)} value={form.libelle} />
-                      <label htmlFor="libelle">Nom de la compétence</label>
+                      <input className="form-control" id={`compLibelle-${index}`}  name='libelle' placeholder='Libellé' onChange={event => handleFormChange(event, index)} value={form.libelle} />
+                      <label htmlFor={`compLibelle-${index}`} >Nom de la compétence</label>
                     </div>
 
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='competence' placeholder='Competence' onChange={event => handleFormChange(event, index)} value={form.competence} />
-                      <label htmlFor="competence">Description de la compétence</label>
+                      <input id={`competence-${index}`}  className="form-control" name='competence' placeholder='Competence' onChange={event => handleFormChange(event, index)} value={form.competence} />
+                      <label htmlFor={`competence-${index}`} >Description de la compétence</label>
                     </div>
 
                     <div className="col-12">
                       <label htmlFor="customRange2" className="form-label">Niveau (0-100)</label>
-                      <input type="range" className="form-range" name='percent' min="0" max="100" step="10" onChange={event => handleFormChange(event, index)} value={form.percent} />
+                      <input id="customRange2" type="range" className="form-range" name='percent' min="0" max="100" step="10" onChange={event => handleFormChange(event, index)} value={form.percent} />
                     </div>
 
                   </div>

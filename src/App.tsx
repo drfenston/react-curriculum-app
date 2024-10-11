@@ -10,6 +10,7 @@ import CVDetail from './pages/cv-detail';
 import CVEdit from './pages/cv-edit';
 import AuthenticationService from './services/authentication-service';
 import Download from './pages/download';
+import { isTokenExpired } from './PrivateRoute';
 
 const App: FunctionComponent = () => {
 
@@ -18,26 +19,42 @@ const App: FunctionComponent = () => {
         localStorage.setItem('token', "")
     }
 
+    const isConnected = () => {
+        const isAuthenticated = AuthenticationService.token !== "";
+    
+        // Vérifier si l'utilisateur est authentifié ou si le token est expiré
+        if (!isAuthenticated || isTokenExpired(AuthenticationService.token)) {
+            // Ou, tu peux retourner `false` ou effectuer d'autres actions
+            return false;
+        }
+        
+        return true;
+    };
+    
+
     return (
         <Router>
             
-            <div className='cv-bg bg-primary pb-5'>
+            <div className='cv-bg bg-primary'>
                 {/*La barre de navigation commun à toutes les pages*/}
-                <nav className="navbar navbar-expand-lg text-primary bg-light">
+                <nav className="navbar navbar-expand-lg bg-perso">
                     <div className="container">
-                        <a className="navbar-brand text-primary" href="/">CyrilMaquaire.com</a>
+                        <a className="navbar-brand text-light" href="/cv/4">CyrilMaquaire.com</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                        {AuthenticationService.token !== "" ? 
+                        {isConnected() ? 
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active text-primary" aria-current="page" href="/cv/all/">Liste</a>
+                                    <a className="nav-link text-light active" aria-current="page" href="/accueil">Accueil</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-primary" onClick={disconnect} href="/" >Déconnecter</a>
+                                    <a className="nav-link text-light" aria-current="page" href="/cv/all/">Liste</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-light" onClick={disconnect} href="/" >Déconnecter</a>
                                 </li>
                             </ul>
                         </div>
@@ -45,7 +62,10 @@ const App: FunctionComponent = () => {
                          <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link text-primary" href="/login" >Connecter</a>
+                                    <a className="nav-link text-light" aria-current="page" href="/accueil">Accueil</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-light" href="/login" >Connecter</a>
                                 </li>
                             </ul>
                         </div>

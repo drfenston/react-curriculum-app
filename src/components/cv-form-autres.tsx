@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import CV from "../models/cv";
 import CVService from "../services/cv-service";
 
@@ -20,12 +20,6 @@ const CVFormAutres: FunctionComponent<Props> = ({ cv }) => {
 
     setFormFields(data);
   };
-
-
-  const submit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log(formFields)
-  }
 
   const addFields = () => {
     CVService.createAutre(cv.id).then(response => {
@@ -53,16 +47,10 @@ const CVFormAutres: FunctionComponent<Props> = ({ cv }) => {
     });
   }
 
-  const [hover, setHover] = useState(false)
-
-  const sectionStyle = {
-    background: hover ? "#e9ecef" : "white"
-  };
-
   return (
     <div className="container border border-top-0 pt-3">
       <div className="p-3">
-        <h2 className="d-inline me-3">Activités</h2>   <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une activité</button>
+        <h2 className="d-inline me-3">Activités</h2>   <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une activité</button>
 
         <div className="row row-cols-3 mt-2">
 
@@ -76,13 +64,13 @@ const CVFormAutres: FunctionComponent<Props> = ({ cv }) => {
                   <div className="card-body mt-n5">
 
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='libelle' placeholder='Libelle' onChange={event => handleFormChange(event, index)} value={form.libelle} />
-                      <label htmlFor="libelle">Activité</label>
+                      <input id={`autreLibelle-${index}`}  className="form-control" name='libelle' placeholder='Libelle' onChange={event => handleFormChange(event, index)} value={form.libelle} />
+                      <label htmlFor={`autreLibelle-${index}`} >Activité</label>
                     </div>
 
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='description' placeholder='Description' onChange={event => handleFormChange(event, index)} value={form.description} />
-                      <label htmlFor="description">Description</label>
+                      <input id={`autreDescription-${index}`} className="form-control" name='description' placeholder='Description' onChange={event => handleFormChange(event, index)} value={form.description} />
+                      <label htmlFor={`autreDescription-${index}`} >Description</label>
                     </div>
 
                   </div>

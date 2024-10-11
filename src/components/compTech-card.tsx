@@ -11,7 +11,7 @@ const CompTechCard: FunctionComponent<Props> = ({ competence, borderColor = '#00
   
   return (
     <div className="col-12 col-md-4 mb-4 text-center">
-      <span className="dot bg-primary py-2 text-white mx-auto my-auto vertical-align">
+      <span className="dot bg-perso py-2 text-white mx-auto my-auto vertical-align">
         <img src={image ? image : placeholderImage} className="mx-auto d-block comp-tech-icon" alt="..." onError={({ currentTarget }) => {
           currentTarget.onerror = null; // prevents looping
           currentTarget.src = placeholderImage;

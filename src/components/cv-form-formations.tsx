@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import CV from "../models/cv";
 import CVService from "../services/cv-service";
-import { showToast } from "./js/jsPerso"
 import DatePickerFloatingLabel from "./ui/DatePickerFloatingLabel"; // Import du composant de date
 
 type Props = {
@@ -73,7 +72,7 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
   return (
     <div className="container border border-top-0 pt-3">
       <div className="p-3">
-        <h2 className="d-inline me-4">Formations</h2> <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une formation</button>
+        <h2 className="d-inline me-4">Formations</h2> <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une formation</button>
         <div className="row row-cols-3 mt-2">
           {formFields.map((form, index) => {
             return (
@@ -87,6 +86,7 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
                     <div className="input-group">
                       {/* Date de début avec DatePicker */}
                       <DatePickerFloatingLabel
+                        id={`debutFormation-${index}`} 
                         label="Début de la formation"
                         initialDate={form.dateDebut ? new Date(form.dateDebut) : null}
                         onDateChange={onDateChangeWithIndex(index, "dateDebut")} // Utilisation de la fonction intermédiaire
@@ -95,19 +95,20 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
 
                       {/* Date de fin avec DatePicker */}
                       <DatePickerFloatingLabel
+                        id={`finFormation-${index}`} 
                         label="Fin de la formation"
                         initialDate={form.dateDebut ? new Date(form.dateFin) : null}
                         onDateChange={onDateChangeWithIndex(index, "dateFin")} // Utilisation de la fonction intermédiaire
                       />
                     </div>
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='etablissement' placeholder='Etablissement' onChange={event => handleFormChange(event, index)} value={form.etablissement} />
-                      <label htmlFor="etablissement">Etablissement fréquenté</label>
+                      <input id={`etablissement-${index}`}  className="form-control" name='etablissement' placeholder='Etablissement' onChange={event => handleFormChange(event, index)} value={form.etablissement} />
+                      <label htmlFor={`etablissement-${index}`} >Etablissement fréquenté</label>
                     </div>
 
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='description' placeholder='Diplome' onChange={event => handleFormChange(event, index)} value={form.description} />
-                      <label htmlFor="diplome">Diplome obtenu</label>
+                      <input id={`diplome-${index}`}  className="form-control" name='description' placeholder='Diplome' onChange={event => handleFormChange(event, index)} value={form.description} />
+                      <label htmlFor={`diplome-${index}`} >Diplome obtenu</label>
                     </div>
                   </div>
 

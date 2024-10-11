@@ -123,7 +123,7 @@ const Login: FunctionComponent = () => {
                 <button type="submit" className="btn btn-primary mt-5">Se connecter</button>
               </div>
               <div className='text-center mt-3'>
-                <a href="" onClick={() => createAccount()} className="card-link">Créer un compte</a>
+                <button onClick={() => createAccount()} className="card-link" style={{ background: 'none', border: 'none', padding: 0 }}>Créer un compte</button>
               </div>
             </div>
           </div>

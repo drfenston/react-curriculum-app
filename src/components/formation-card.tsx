@@ -22,7 +22,7 @@ const FormationCard: FunctionComponent<Props> = ({ formation, borderColor = '#00
 
   return (
     <div className="row m-2">
-      <div className="col-3"><span className="badge text-bg-primary">{formatDate(formation.dateDebut, formation.dateFin)}</span></div>
+      <div className="col-3"><span className="badge bg-perso">{formatDate(formation.dateDebut, formation.dateFin)}</span></div>
       <div className="col-9">
         <div className="message-item">
           <h5>{formation.etablissement}</h5>

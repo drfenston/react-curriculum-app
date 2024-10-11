@@ -19,7 +19,7 @@ const DownloadPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="container p-5 bg-white shadow rounded mt-5 text-center">
+    <div className="container p-5 bg-light shadow rounded mt-5 text-center">
       <h1 className='mb-5'>Télécharger l'application Android</h1>
       <img src="/img/character_fall.png" alt="Character" style={{ maxWidth: '100%', height: 'auto' }} />
       {loading ? (

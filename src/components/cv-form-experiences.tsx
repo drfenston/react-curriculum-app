@@ -77,7 +77,7 @@ const CVFormExperiences: FunctionComponent<Props> = ({ cv }) => {
   return (
     <div className="container border border-top-0 pt-3">
       <div className="p-3">
-        <h2 className="d-inline me-3">Expériences Professionnelles</h2>  <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter une expérience professionnelle</button>
+        <h2 className="d-inline me-3">Expériences Professionnelles</h2>  <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une expérience professionnelle</button>
 
         <div className="row mt-2">
 
@@ -96,27 +96,29 @@ const CVFormExperiences: FunctionComponent<Props> = ({ cv }) => {
                     <div className="input-group">
                       {/* Date de début avec DatePicker */}
                       <DatePickerFloatingLabel
-                        label="Date du début du projet"
+                        id={`debutPoste-${index}`} 
+                        label="Date du début du poste"
                         initialDate={form.dateDebut ? new Date(form.dateDebut) : null}
                         onDateChange={onDateChangeWithIndex(index, "dateDebut")}
                       />
 
                       {/* Date de fin avec DatePicker */}
                       <DatePickerFloatingLabel
-                        label="Date de fin du projet"
+                        id={`finPoste-${index}`} 
+                        label="Date de fin du postet"
                         initialDate={form.dateDebut ? new Date(form.dateFin) : null}
                         onDateChange={onDateChangeWithIndex(index, "dateFin")}
                       />
                     </div>
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='entreprise' placeholder='Entreprise' onChange={event => handleFormChange(event, index)} value={form.entreprise} />
-                      <label htmlFor="entreprise">Entreprise</label>
+                      <input id={`entreprise-${index}`}  className="form-control" name='entreprise' placeholder='Entreprise' onChange={event => handleFormChange(event, index)} value={form.entreprise} />
+                      <label htmlFor={`entreprise-${index}`} >Entreprise</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input className="form-control" name='poste' placeholder='Poste' onChange={event => handleFormChange(event, index)} value={form.poste} />
-                      <label htmlFor="poste">Poste occupé</label>
+                      <input id={`poste-${index}`}  className="form-control" name='poste' placeholder='Poste' onChange={event => handleFormChange(event, index)} value={form.poste} />
+                      <label htmlFor={`poste-${index}`} >Poste occupé</label>
                     </div>
-                    <CVFormProjets experience={form} isEditForm={true}></CVFormProjets>
+                    <CVFormProjets key={index} experience={form} expIndex={index}></CVFormProjets>
                   </div>
 
                 </div>

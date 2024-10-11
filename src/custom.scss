@@ -1,6 +1,237 @@
+$primary: #38648c; // Couleur principale
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #a31414;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #f8f9fa;
+$dark: #343a40;
 
-$primary: #125c6f;
+@import "~bootstrap/scss/bootstrap";
 
-$body-color: #696969;
+// Variables de couleurs pour le thème
+$color-primary-a0: #ffffff; // Couleur primaire
+$color-primary-a10: #e2eefe;
+$color-primary-a20: #c3ddfc;
+$color-primary-a30: #a3cdfb;
+$color-primary-a40: #80bdf9;
+$color-primary-a50: #54adf7;
+$color-primary-a60: #4688c0;
+$color-primary-a70: #38648c;
+$color-primary-a80: #29435c;
+$color-primary-a90: #19242f;
+$color-primary-a100: #000000;
 
-@import '~bootstrap/scss/bootstrap.scss'
+// Variables de couleurs secondaires
+$color-secondary-a0: #ffffff;
+$color-secondary-a10: #dbf2e9;
+$color-secondary-a20: #b7e5d3;
+$color-secondary-a30: #91d7be;
+$color-secondary-a40: #67c9a9;
+$color-secondary-a50: #2fbb94;
+$color-secondary-a60: #2c9375;
+$color-secondary-a70: #266c57;
+$color-secondary-a80: #1f483a;
+$color-secondary-a90: #152620;
+$color-secondary-a100: #000000;
+
+// Variables de couleur de succès
+$color-success-a0: #ffffff; // Couleur de succès
+$color-success-a10: #e6f9e9;
+$color-success-a20: #c1e4c1;
+$color-success-a30: #99cc99;
+$color-success-a40: #80b380;
+$color-success-a50: #66a366;
+$color-success-a60: #4d7a4d;
+$color-success-a70: #3d603d;
+$color-success-a80: #2e472e;
+$color-success-a90: #1f2e1f;
+$color-success-a100: #0f0f0f;
+
+// Variables de couleur d'erreur
+$color-danger-a0: #ffffff; // Couleur d'erreur
+$color-danger-a10: #fce8e6;
+$color-danger-a20: #f0b2b0;
+$color-danger-a30: #e57f7c;
+$color-danger-a40: #de4c4b;
+$color-danger-a50: #d4201e;
+$color-danger-a60: #a31414;
+$color-danger-a70: #800b0b;
+$color-danger-a80: #590606;
+$color-danger-a90: #2b0202;
+$color-danger-a100: #000000;
+
+// Variables de couleur d'avertissement
+$color-warning-a0: #ffffff; // Couleur d'avertissement
+$color-warning-a10: #fff3cd;
+$color-warning-a20: #ffeeba;
+$color-warning-a30: #ffeeba;
+$color-warning-a40: #ffc107;
+$color-warning-a50: #ffae24;
+$color-warning-a60: #ff9900;
+$color-warning-a70: #d68a00;
+$color-warning-a80: #b57a00;
+$color-warning-a90: #9c6b00;
+$color-warning-a100: #8b5d00;
+
+// Variables de couleur d'information
+$color-info-a0: #ffffff; // Couleur d'information
+$color-info-a10: #d1ecf1;
+$color-info-a20: #a4d9e1;
+$color-info-a30: #7bb8cd;
+$color-info-a40: #6fbdca;
+$color-info-a50: #5cb7c4;
+$color-info-a60: #4da0a7;
+$color-info-a70: #3c8e92;
+$color-info-a80: #2c7b7f;
+$color-info-a90: #1c606b;
+$color-info-a100: #0c4747;
+
+// Variables de couleur claire
+$color-light-a0: #ffffff; // Couleur claire
+$color-light-a10: #f8f9fa;
+$color-light-a20: #e9ecef;
+$color-light-a30: #dee2e6;
+$color-light-a40: #ced4da;
+$color-light-a50: #adb5bd;
+$color-light-a60: #6c757d;
+$color-light-a70: #495057;
+$color-light-a80: #343a40;
+$color-light-a90: #212529;
+$color-light-a100: #0b0c0d;
+
+// Variables de couleur sombre
+$color-dark-a0: #ffffff; // Couleur sombre
+$color-dark-a10: #e1e1e1;
+$color-dark-a20: #c0c0c0;
+$color-dark-a30: #9e9e9e;
+$color-dark-a40: #7d7d7d;
+$color-dark-a50: #6a6a6a;
+$color-dark-a60: #4b4b4b;
+$color-dark-a70: #3b3b3b;
+$color-dark-a80: #2c2c2c;
+$color-dark-a90: #1d1d1d;
+$color-dark-a100: #0d0d0d;
+
+// Classes pour les couleurs
+.bg-primary {
+    color: $color-primary-a20 !important;
+    background-color: $color-primary-a70 !important;
+}
+
+.bg-secondary {
+    color: $color-secondary-a20 !important;
+    background-color: $color-secondary-a70 !important;
+}
+
+.bg-success {
+    color: $color-success-a80;
+    background-color: $color-success-a10;
+}
+
+.bg-danger {
+    color: $color-danger-a80;
+    background-color: $color-danger-a10;
+}
+
+.bg-warning {
+    color: $color-warning-a80;
+    background-color: $color-warning-a10;
+}
+
+.bg-info {
+    color: $color-info-a80;
+    background-color: $color-info-a10;
+}
+
+.bg-light {
+    color: $color-light-a70 !important;
+    background-color: $color-light-a20 !important;
+}
+
+.bg-dark {
+    color: $color-dark-a10;
+    background-color: $color-dark-a80;
+}
+
+.text-primary {
+    color: $color-dark-a70;
+}
+
+.text-secondary {
+    color: $color-secondary-a10;
+}
+
+.text-perso {
+    color: #2fbb94
+}
+
+.bg-perso {
+    background-color: #2fbb94
+}
+.lead {
+    color: $color-light-a70
+}
+.border {
+    border-color: $primary !important;
+}
+.active {
+    border-color: $primary !important;
+}
+// Variables de couleur basées sur Bootstrap
+$btn-primary-bg: $color-primary-a80;
+$btn-primary-color: $color-primary-a10; // texte en blanc
+$btn-primary-border: $color-primary-a80; // même couleur pour la bordure
+
+$btn-secondary-bg: $color-secondary-a80;
+$btn-secondary-color: $color-secondary-a10;
+$btn-secondary-border: $color-secondary-a80;
+.btn-outline-danger {
+    background-color: $color-danger-a60 !important;
+    color : $color-danger-a10 !important;
+}
+.btn-sm {
+    padding: 5px !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+}
+.btn-secondary {
+   background-color: $color-success-a60 !important;
+}
+// Custom buttons styles
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #e29e21;
+    color: $color-success-a10 !important;
+    // Coins carrés
+    border-radius: 0 !important;
+
+    // Ombre légère
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+    // Transition douce
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    // Hover effect
+    &:hover {
+        color: $color-primary-a80;
+        background-color: lighten($btn-primary-bg, 10%);
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    // Focus effect
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($color-primary-a80, 0.5);
+    }
+
+    // Active effect
+    &:active {
+        background-color: darken($btn-primary-bg, 10%);
+        box-shadow: none;
+    }
+}

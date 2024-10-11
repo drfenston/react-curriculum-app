@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import CV from '../models/cv';
 import Loader from '../components/loader';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ExperienceCard from '../components/experience-card';
 import FormationCard from '../components/formation-card';
@@ -52,9 +51,9 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
   };
 
   return (
-    <div className="cv-bg bg-primary pt-5">
+    <div className="container py-5">
       {cv ? (
-        <div className="container py-5 bg-white shadow rounded">
+        <div className="py-5 px-3 bg-light shadow rounded">
           <div className="row">
             <div className="col-12 col-lg-4 border-end border-3 px-4">
               <img src={"https://www.cyrilmaquaire.com/curriculum/uploads/" + cv.profileImage} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
@@ -72,13 +71,13 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
 
               {(cv.telephone || cv.mail || cv.website || cv.adresse1 || cv.adresse2 || cv.zipCode || cv.city) && (
                 <div className='d-flex align-items-center'>
-                  <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_contact.png"></img>
+                  <img className="me-2 pb-2 pt-3" src="../img/icon_contact.png" alt=""></img>
                   <h4 className="display-6 pb-2 pt-3 text-uppercase">Contact</h4>
                 </div>
               )}
               {cv.telephone && (
                 <div className="row ms-2">
-                  <div className="col-2 text-primary"><i className="bi bi-phone fs-4"></i>
+                  <div className="col-2 text-perso"><i className="bi bi-phone fs-4"></i>
                   </div>
                   <span className="col-10 lead">{cv.telephone}</span>
                 </div>
@@ -86,7 +85,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
 
               {cv.mail && (
                 <div className="row ms-2">
-                  <div className="col-2 text-primary">
+                  <div className="col-2 text-perso">
                     <i className="bi bi-at fs-4"></i>
                   </div>
                   <div className="col-10">
@@ -100,7 +99,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
 
               {cv.website && (
                 <div className="row ms-2">
-                  <div className="col-2 text-primary">
+                  <div className="col-2 text-perso">
                     <i className="bi bi-globe fs-4"></i>
                   </div>
                   <span className="col-10 lead">
@@ -119,7 +118,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
 
               {(cv.adresse1 || cv.adresse2 || cv.zipCode || cv.city) && (
                 <div className="row ms-2">
-                  <div className="col-2 text-primary"><i className="bi bi-geo-alt-fill fs-4"></i></div>
+                  <div className="col-2 text-perso"><i className="bi bi-geo-alt-fill fs-4"></i></div>
                   <span className="col-10 lead">{cv.adresse1} {cv.adresse2 !== "" && <div>{cv.adresse2}</div>} <div>{cv.zipCode} {cv.city}</div></span>
                 </div>
               )}
@@ -127,7 +126,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               {cv.langues && cv.langues.length > 0 && (
                 <>
                   <div className='d-flex align-items-center'>
-                    <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_langues.png"></img>
+                    <img className="me-2 pb-2 pt-3" src="../img/icon_langues.png" alt=""></img>
                     <h4 className="display-6 pb-2 pt-3 text-uppercase" >Langues</h4>
                   </div>
                   {cv.langues.map(langue => (
@@ -139,7 +138,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               {cv.autres && cv.autres.length > 0 && (
                 <>
                   <div className='d-flex align-items-center'>
-                    <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_activites.png"></img>
+                    <img className="me-2 pb-2 pt-3" src="../img/icon_activites.png" alt=""></img>
                     <h4 className="display-6 pb-2 pt-3 text-uppercase">Activités</h4>
                   </div>
                   <div className='row'>
@@ -160,7 +159,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               {cv.competenceTechniques && cv.competenceTechniques.length > 0 && (
                 <>
                   <div className='d-flex align-items-center'>
-                    <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_comptech.png"></img>
+                    <img className="me-2 pb-2 pt-3" src="../img/icon_comptech.png" alt=""></img>
                     <h4 className="display-6 pb-2 pt-3 text-uppercase">Compétences techniques</h4>
                   </div>
                   <div className='row'>
@@ -174,7 +173,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               {cv.experiences && cv.experiences.length > 0 && (
                 <>
                   <div className='d-flex align-items-center'>
-                    <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_experience.png"></img>
+                    <img className="me-2 pb-2 pt-3" src="../img/icon_experience.png" alt=""></img>
                     <h4 className="display-6 pb-2 pt-3 text-uppercase">Experience</h4>
                   </div>
                   {cv.experiences.sort((a, b) => (Date.parse(a.dateDebut) < Date.parse(b.dateDebut)) ? 1 : -1).map(experience => (
@@ -186,7 +185,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
               {cv.formations && cv.formations.length > 0 && (
                 <>
                   <div className='d-flex align-items-center'>
-                    <img className="me-2 pb-2 pt-3" src="https://www.cyrilmaquaire.com/curriculum/uploads/icon_education.png"></img>
+                    <img className="me-2 pb-2 pt-3" src="../img/icon_education.png" alt=""></img>
                     <h4 className="display-6 pb-2 pt-3 text-uppercase">Études</h4>
                   </div>
                   {cv.formations

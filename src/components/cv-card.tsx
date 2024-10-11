@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import CV from "../models/cv";
 import { useHistory } from "react-router-dom";
 type Props = {
@@ -27,21 +27,15 @@ const CVCard: FunctionComponent<Props> = ({ cv }) => {
                     <p className="card-text truncate">{cv.description}</p>
                 </div>
                 <div className="card-footer d-flex justify-content-between">
-                    <a href="" onClick={() => goToCV(cv.id)} className="card-link no-underline">
+                    <button onClick={() => goToCV(cv.id)} className="card-link no-underline" style={{ background: 'none', border: 'none', padding: 0 }}>
                         <i className="bi bi-eye-fill"></i> Voir
-                    </a>
-                    <a href="" onClick={() => editCV(cv.id)} className="card-link no-underline">
+                    </button>
+                    <button onClick={() => editCV(cv.id)} className="card-link no-underline" style={{ background: 'none', border: 'none', padding: 0 }}>
                         <i className="bi bi-pencil-fill"></i> Editer
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     );
 }
 

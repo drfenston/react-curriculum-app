@@ -73,7 +73,7 @@ const FrontPage = () => {
       </Hero>
 
       {/* Hero section 4 */}
-      <Hero backgroundClass="bg-primary text-white">
+      <Hero backgroundClass="bg-secondary text-white">
         <div className='container' style={{ maxWidth: '800px' }}>
           <div className='row'>
             <div className="text-center">

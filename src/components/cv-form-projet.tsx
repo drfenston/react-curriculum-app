@@ -4,10 +4,10 @@ import CVService from "../services/cv-service";
 
 type Props = {
   experience: Experience,
-  isEditForm: boolean
+  expIndex:number
 };
 
-const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
+const CVFormProjets: FunctionComponent<Props> = ({ experience, expIndex }) => {
   const [formFields, setFormFields] = useState(experience.projets)
 
   const handleFormChange = (
@@ -54,7 +54,7 @@ const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
 
   return (
     <div className="mt-5">
-      <h4 className="d-inline me-3">Projets</h4> <button type="button" onClick={addFields} className="btn btn-primary btn-sm">Ajouter un projet</button>
+      <h4 className="d-inline me-3">Projets</h4> <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter un projet</button>
 
       <div className="row mt-2">
 
@@ -69,12 +69,12 @@ const CVFormProjets: FunctionComponent<Props> = ({ experience }) => {
 
                 <div className="card-body mt-n5">
                   <div className="form-floating mb-3">
-                    <input className="form-control" name='nom' placeholder='Nom' onChange={event => handleFormChange(event, index)} value={form.nom} />
-                    <label htmlFor="nom">Nom du projet</label>
+                    <input id={`nomProjet-${expIndex}-${index}`} className="form-control" name='nom' placeholder='Nom' onChange={event => handleFormChange(event, index)} value={form.nom} />
+                    <label htmlFor={`nomProjet-${expIndex}-${index}`} >Nom du projet</label>
                   </div>
                   <div className="form-floating mb-3">
-                    <input className="form-control" name='description' placeholder='Description' onChange={event => handleFormChange(event, index)} value={form.description} />
-                    <label htmlFor="description">Description du projet</label>
+                    <input id={`descriptionProjet-${expIndex}-${index}`} className="form-control" name='description' placeholder='Description' onChange={event => handleFormChange(event, index)} value={form.description} />
+                    <label htmlFor={`descriptionProjet-${expIndex}-${index}`} >Description du projet</label>
                   </div>
                 </div>
               </div>

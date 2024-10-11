@@ -6,7 +6,6 @@ import AuthenticationService from './services/authentication-service';
 const PrivateRoute = ({ component: Component, ...rest }: any) => (
   <Route {...rest} render={(props) => {
     const isAuthenticated = AuthenticationService.token !== "";
-    console.log("isAuthenticated : " + isAuthenticated + " Token : " + AuthenticationService.token)
     if (!isAuthenticated || isTokenExpired(AuthenticationService.token)) {    
       return <Redirect to={{ pathname: '/login' }} />
     }
@@ -20,7 +19,7 @@ type DecodedToken = {
   exp?: number;  // Le champ exp pourrait être indéfini
 };
 
-const isTokenExpired = (token: string) => {
+export const isTokenExpired = (token: string) => {
   if (!token) return true;
 
   try {

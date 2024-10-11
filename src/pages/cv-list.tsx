@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import CV from '../models/cv';
 import CVCard from '../components/cv-card';
 import CVService from '../services/cv-service';
@@ -10,7 +9,6 @@ type Params = { id: string };
 
 const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   const [cvList, setCVS] = useState<CV[]>([]);
-  const history = useHistory();
 
   type Field = {
     value?: any,
@@ -78,7 +76,7 @@ const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   }, []);
 
   return (
-      <div className="container p-5 bg-white shadow rounded mt-5">
+      <div className="container p-5 bg-light shadow rounded mt-5">
         <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="card h-100">
