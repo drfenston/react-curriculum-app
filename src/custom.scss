@@ -148,7 +148,10 @@ $color-dark-a100: #0d0d0d;
     color: $color-light-a70 !important;
     background-color: $color-light-a20 !important;
 }
-
+.bg-white {
+    color: $color-light-a70 !important;
+    background-color: $color-light-a0 !important;
+}
 .bg-dark {
     color: $color-dark-a10;
     background-color: $color-dark-a80;
@@ -181,7 +184,7 @@ $color-dark-a100: #0d0d0d;
 // Variables de couleur basées sur Bootstrap
 $btn-primary-bg: $color-primary-a80;
 $btn-primary-color: $color-primary-a10; // texte en blanc
-$btn-primary-border: $color-primary-a80; // même couleur pour la bordure
+$btn-primary-border: $color-primary-a10; // même couleur pour la bordure
 
 $btn-secondary-bg: $color-secondary-a80;
 $btn-secondary-color: $color-secondary-a10;
@@ -205,10 +208,9 @@ $btn-secondary-border: $color-secondary-a80;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #e29e21;
+    background-color: #2fbb94;
     color: $color-success-a10 !important;
-    // Coins carrés
-    border-radius: 0 !important;
+    outline-color: white;
 
     // Ombre légère
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);

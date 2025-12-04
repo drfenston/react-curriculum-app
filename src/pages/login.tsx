@@ -85,9 +85,8 @@ const Login: FunctionComponent = () => {
   }
 
   return (
-    <div className="container p-5 bg-white shadow rounded mt-5">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="row col-6 pt-5 mx-auto">
+        <div className="row p-3 pt-5 mx-auto" style={{ maxWidth: '500px', height: 'auto' }}>
           <div className="card bg-body-tertiary">
             <div className="card-body">
               <div className="card-content">
@@ -120,7 +119,7 @@ const Login: FunctionComponent = () => {
               </div>
               <div className="text-center">
                 {/* Submit button */}
-                <button type="submit" className="btn btn-primary mt-5">Se connecter</button>
+                <button type="submit" className="btn btn-light mt-3">Se connecter</button>
               </div>
               <div className='text-center mt-3'>
                 <button onClick={() => createAccount()} className="card-link" style={{ background: 'none', border: 'none', padding: 0 }}>Créer un compte</button>
@@ -129,7 +128,6 @@ const Login: FunctionComponent = () => {
           </div>
         </div>
       </form>
-    </div>
   );
 };
 

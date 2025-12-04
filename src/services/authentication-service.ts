@@ -6,7 +6,7 @@ export default class AuthenticationService {
     static user:string = localStorage.getItem('user') || "";
 
     static login(username: string, password: string): Promise<LoginResponse> {
-      return fetch(`https://cyrilmaquaire.com/curriculum/api/login/`, {
+      return fetch(`https://maquairecyril.com/curriculum/api/login/`, {
             headers: { 
                 'Content-Type': 'application/json'
             },

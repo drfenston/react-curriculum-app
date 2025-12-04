@@ -70,44 +70,47 @@ const CVFormFormations: FunctionComponent<Props> = ({ cv }) => {
   }
 
   return (
-    <div className="container border border-top-0 pt-3">
-      <div className="p-3">
+    <div className="container">
+      <div className="py-3">
         <h2 className="d-inline me-4">Formations</h2> <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une formation</button>
         <div className="row row-cols-3 mt-2">
           {formFields.map((form, index) => {
             return (
-              <div className="col-sm-4" key={index}>
+              <div className="col-12 col-lg-6" key={index}>
                 <div className="card card-hover-shadow mt-4">
 
                   <div className="card-header border-bottom-0 text-end">
                     <button className="btn btn-outline-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onClick={() => removeFields(index)}><i className="bi bi-trash"></i> Supprimer la formation</button>
                   </div>
                   <div className="card-body mt-n5">
-                    <div className="input-group">
-                      {/* Date de début avec DatePicker */}
-                      <DatePickerFloatingLabel
-                        id={`debutFormation-${index}`} 
-                        label="Début de la formation"
-                        initialDate={form.dateDebut ? new Date(form.dateDebut) : null}
-                        onDateChange={onDateChangeWithIndex(index, "dateDebut")} // Utilisation de la fonction intermédiaire
-                      />
+                    <div className="row">
+                      <div className='col-md-6 col-12'>
+                        {/* Date de début avec DatePicker */}
+                        <DatePickerFloatingLabel
+                          id={`debutFormation-${index}`}
+                          label="Début de la formation"
+                          initialDate={form.dateDebut ? new Date(form.dateDebut) : null}
+                          onDateChange={onDateChangeWithIndex(index, "dateDebut")} // Utilisation de la fonction intermédiaire
+                        />
+                      </div>
+                      <div className='col-md-6 col-12'>
 
-
-                      {/* Date de fin avec DatePicker */}
-                      <DatePickerFloatingLabel
-                        id={`finFormation-${index}`} 
-                        label="Fin de la formation"
-                        initialDate={form.dateDebut ? new Date(form.dateFin) : null}
-                        onDateChange={onDateChangeWithIndex(index, "dateFin")} // Utilisation de la fonction intermédiaire
-                      />
+                        {/* Date de fin avec DatePicker */}
+                        <DatePickerFloatingLabel
+                          id={`finFormation-${index}`}
+                          label="Fin de la formation"
+                          initialDate={form.dateDebut ? new Date(form.dateFin) : null}
+                          onDateChange={onDateChangeWithIndex(index, "dateFin")} // Utilisation de la fonction intermédiaire
+                        />
+                      </div>
                     </div>
                     <div className="form-floating mb-3">
-                      <input id={`etablissement-${index}`}  className="form-control" name='etablissement' placeholder='Etablissement' onChange={event => handleFormChange(event, index)} value={form.etablissement} />
+                      <input id={`etablissement-${index}`} className="form-control" name='etablissement' placeholder='Etablissement' onChange={event => handleFormChange(event, index)} value={form.etablissement} />
                       <label htmlFor={`etablissement-${index}`} >Etablissement fréquenté</label>
                     </div>
 
                     <div className="form-floating mb-3">
-                      <input id={`diplome-${index}`}  className="form-control" name='description' placeholder='Diplome' onChange={event => handleFormChange(event, index)} value={form.description} />
+                      <input id={`diplome-${index}`} className="form-control" name='description' placeholder='Diplome' onChange={event => handleFormChange(event, index)} value={form.description} />
                       <label htmlFor={`diplome-${index}`} >Diplome obtenu</label>
                     </div>
                   </div>

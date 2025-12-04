@@ -11,11 +11,20 @@ import CreateExperienceResponse from "../models/response/createExperienceRespons
 import CreateProjetResponse from "../models/response/createProjetResponse";
 import CreateCvResponse from "../models/response/createCvResponse";
 import LatesteApkResponse from "../models/response/latestApkResponse";
+import BeaconResponse from "../models/response/beaconResponse";
 
 export default class CVService {
 
     static latestApk(): Promise<LatesteApkResponse> {
-        return fetch("https://cyrilmaquaire.com/curriculum/api/latest-apk", { 
+        return fetch("https://maquairecyril.com/curriculum/api/latest-apk", { 
+            method: 'GET'
+        })
+        .then(async (response) => {if(response.ok) return response.json()})
+        .catch((error) => this.handleError(error));
+    }
+
+    static getBeacons(): Promise<BeaconResponse> {
+        return fetch("https://maquairecyril.com/curriculum/api/findAllBeacons", { 
             method: 'GET'
         })
         .then(async (response) => {if(response.ok) return response.json()})
@@ -23,7 +32,7 @@ export default class CVService {
     }
 
     static uploadProfileImage(data: FormData): Promise<UploadProfileImageResponse> {
-        return fetch("https://cyrilmaquaire.com/curriculum/api/uploadProfileImage", { 
+        return fetch("https://maquairecyril.com/curriculum/api/uploadProfileImage", { 
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`
             },
@@ -36,7 +45,7 @@ export default class CVService {
 
     static updateCV(cv: CV): Promise<CVSResponse> {
         const objWithoutId = { ...cv, id: undefined };
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/cv/${cv.id}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/cv/${cv.id}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -51,7 +60,7 @@ export default class CVService {
 
     static getCVS(userId: number): Promise<CVSResponse> {
         console.log(userId)
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/findAllCV/${userId}`)
+        return fetch(`https://maquairecyril.com/curriculum/api/findAllCV/${userId}`)
             .then(response =>{
                 console.log(response)// this is response from server, including all ok and error responses 
                 if(response.ok)
@@ -64,14 +73,14 @@ export default class CVService {
     }
 
     static getCV(id: number): Promise<CVResponse | null> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/cv/${id}`)
+        return fetch(`https://maquairecyril.com/curriculum/api/cv/${id}`)
             .then(response => response.json())
             .then(data => this.isEmpty(data) ? null : data)
             .catch(error => this.handleError(error));
     }
 
     static createCv(poste: string, userId: number): Promise<CreateCvResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/cv/`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/cv/`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -91,7 +100,7 @@ export default class CVService {
     }
 
     static createUser(username: string, password: string): Promise<CreateCompTechResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/user/`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/user/`, {
             headers: { 
                 'Content-Type': 'application/json'
             },
@@ -110,7 +119,7 @@ export default class CVService {
     }
 
     static createCompetenceTechnique(cvId: number): Promise<CreateCompTechResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/competenceTechnique/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/competenceTechnique/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -129,7 +138,7 @@ export default class CVService {
     }
 
     static deleteCompetenceTechnique(compTechId: number): Promise<CreateLangueResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/competenceTechnique/${compTechId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/competenceTechnique/${compTechId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -148,7 +157,7 @@ export default class CVService {
     }
 
     static createExperience(cvId: number): Promise<CreateExperienceResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/experience/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/experience/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -166,7 +175,7 @@ export default class CVService {
     }
 
     static deleteExperience(experienceId: number): Promise<CreateExperienceResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/experience/${experienceId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/experience/${experienceId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -185,7 +194,7 @@ export default class CVService {
     }
 
     static createProjet(cvId: number): Promise<CreateProjetResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/projet/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/projet/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -204,7 +213,7 @@ export default class CVService {
     }
 
     static deleteProjet(projetId: number): Promise<CreateProjetResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/projet/${projetId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/projet/${projetId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -223,7 +232,7 @@ export default class CVService {
     }
 
     static createAutre(cvId: number): Promise<CreateAutreResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/autre/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/autre/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -242,7 +251,7 @@ export default class CVService {
     }
 
     static deleteAutre(autreId: number): Promise<CreateAutreResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/autre/${autreId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/autre/${autreId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -261,7 +270,7 @@ export default class CVService {
     }
 
     static createLangue(cvId: number): Promise<CreateLangueResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/langue/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/langue/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -280,7 +289,7 @@ export default class CVService {
     }
 
     static deleteLangue(langueId: number): Promise<CreateLangueResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/langue/${langueId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/langue/${langueId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -299,7 +308,7 @@ export default class CVService {
     }
 
     static createFormation(cvId: number): Promise<CreateFormationResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/formation/${cvId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/formation/${cvId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'
@@ -318,7 +327,7 @@ export default class CVService {
     }
 
     static deleteFormation(langueId: number): Promise<CreateFormationResponse> {
-        return fetch(`https://cyrilmaquaire.com/curriculum/api/formation/${langueId}`, {
+        return fetch(`https://maquairecyril.com/curriculum/api/formation/${langueId}`, {
             headers: { 
                 'Authorization': `Bearer ${AuthenticationService.token}`,
                 'Content-Type': 'application/json'

@@ -1,6 +1,6 @@
 # Projet Curriculum
 
-www.cyrilmaquaire.com
+www.maquairecyril.com
 
 Ceci est un projet perso visant à créer, from scratch, un curriculum vitae, en ligne, avec une partie backend afin de le mettre à jour si nécessaire dans le but d'apprendre les bases de React et de NodeJS.
 

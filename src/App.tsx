@@ -8,6 +8,8 @@ import Create from './pages/create';
 import PrivateRoute from './PrivateRoute';
 import CVDetail from './pages/cv-detail';
 import CVEdit from './pages/cv-edit';
+import BeaconList from './pages/beacon-list';
+import Print from './pages/print';
 import AuthenticationService from './services/authentication-service';
 import Download from './pages/download';
 import { isTokenExpired } from './PrivateRoute';
@@ -35,11 +37,11 @@ const App: FunctionComponent = () => {
     return (
         <Router>
             
-            <div className='cv-bg bg-primary'>
+            <div className='cv-bg bg-primary pb-3'>
                 {/*La barre de navigation commun à toutes les pages*/}
                 <nav className="navbar navbar-expand-lg bg-perso">
                     <div className="container">
-                        <a className="navbar-brand text-light" href="/cv/4">CyrilMaquaire.com</a>
+                        <a className="navbar-brand text-light" href="/cv/4">MaquaireCyril.com</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -82,7 +84,9 @@ const App: FunctionComponent = () => {
                     <Route exact path="/" component={Accueil} />
                     <PrivateRoute exact path="/cv/all/" component={CVList} />
                     <PrivateRoute path="/cv/edit/:id" component={CVEdit} />
+                    <Route path="/print/:id" component={Print} />
                     <Route path="/cv/:id" component={CVDetail} />
+                    <Route path="/beacon/" component={BeaconList} />
                     <Route component={PageNotFound} />
                 </Switch>
             </div>

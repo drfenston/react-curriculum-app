@@ -89,9 +89,8 @@ const Create: FunctionComponent = () => {
   }
 
   return (
-    <div className="container">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="row col-6 pt-5 mx-auto">
+        <div className="row p-3 pt-5 mx-auto" style={{ maxWidth: '500px', height: 'auto' }}>
           <div className="card bg-body-tertiary">
             <div className="card-body">
               <div className="card-content">
@@ -124,13 +123,12 @@ const Create: FunctionComponent = () => {
               </div>
               <div className="text-center">
                 {/* Submit button */}
-                <button type="submit" className="btn btn-primary mt-5">Créer un compte</button>
+                <button type="submit" className="btn btn-light mt-3">Créer un compte</button>
               </div>
             </div>
           </div>
         </div>
       </form>
-    </div>
   );
 };
 

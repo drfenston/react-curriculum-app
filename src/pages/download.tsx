@@ -31,7 +31,7 @@ const DownloadPage: React.FC = () => {
           </p>
           <a
             href={downloadData ? downloadData.data.path : "#"}
-            className="btn btn-primary mb-3"
+            className="btn btn-light mb-3"
             download
           >
             {downloadData ? "Télécharger l'application" : "Lien indisponible"}

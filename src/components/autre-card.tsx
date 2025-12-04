@@ -7,12 +7,12 @@ type Props = {
 };
 
 const AutreCard: FunctionComponent<Props> = ({ autre }) => {
-  const placeholderImage = 'https://www.cyrilmaquaire.com/curriculum/uploads/activity_default.png'
-  const image = "https://www.cyrilmaquaire.com/curriculum/uploads/" + autre.libelle + ".png"
+  const placeholderImage = 'https://maquairecyril.com/curriculum/uploads/activity_default.png'
+  const image = "https://maquairecyril.com/curriculum/uploads/" + autre.libelle + ".png"
   
   return (
-    <div className="col-6 mb-4">
-      <div><img src={"https://www.cyrilmaquaire.com/curriculum/uploads/"+autre.libelle+".png"}  className="mx-auto d-block autre-icon" alt="..." onError={({ currentTarget }) => {
+    <div className="col-6 col-md-3 col-sm-3 col-lg-6 mb-4">
+      <div><img src={"https://maquairecyril.com/curriculum/uploads/"+autre.libelle+".png"}  className="mx-auto d-block autre-icon" alt="..." onError={({ currentTarget }) => {
           currentTarget.onerror = null; // prevents looping
           currentTarget.src = placeholderImage;
         }}/></div>

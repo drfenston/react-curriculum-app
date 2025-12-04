@@ -16,7 +16,8 @@ const CVEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   }, [match.params.id]);
 
   return (
-    <div className='container p-5 bg-light shadow rounded mt-5 h-100'>
+    <div className='container py-4'>
+      <div className="px-3 bg-light shadow rounded">
       {cv ? (
         <div className="row">
           <h2 className="h2 text-center py-3">Éditer le CV de {cv.nom} {cv.prenom}</h2>
@@ -34,6 +35,7 @@ const CVEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
       ) : (
         <h4 className="center"><Loader /></h4>
       )}
+    </div>
     </div>
   );
 }

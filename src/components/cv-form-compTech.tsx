@@ -53,15 +53,15 @@ const CVFormCompTech: FunctionComponent<Props> = ({ cv }) => {
   }
 
   return (
-    <div className="container border border-top-0 pt-3">
-      <div className="p-3">
+    <div className="container">
+      <div className="py-3">
         <h2 className="d-inline me-3 mt-3">Compétences Techniques</h2>  <button type="button" onClick={addFields} className="btn btn-secondary btn-sm">Ajouter une compétence technique</button>
 
         <div className="row row-cols-3 mt-2">
 
           {formFields.map((form, index) => {
             return (
-              <div className="col-sm-4" key={index}>
+              <div className="col-12 col-lg-4 col-md-6" key={index}>
                 <div className="card card-hover-shadow mt-4">
 
                   <div className="card-header border-bottom-0 text-end">

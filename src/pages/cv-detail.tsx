@@ -56,7 +56,7 @@ const CVDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => 
         <div className="py-5 px-3 bg-light shadow rounded">
           <div className="row">
             <div className="col-12 col-lg-4 border-end border-3 px-4">
-              <img src={"https://www.cyrilmaquaire.com/curriculum/uploads/" + cv.profileImage} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
+              <img src={"https://maquairecyril.com/curriculum/uploads/" + cv.profileImage} style={{ maxWidth: '100%', height: 'auto' }} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
               <h2 id="nomPrenomCV" className="text-center mt-4 text-capitalize">  {(cv.nom || "") + " " + (cv.prenom || "")} </h2>
 
               <h4 className="text-center mb-2">{cv.poste}</h4>

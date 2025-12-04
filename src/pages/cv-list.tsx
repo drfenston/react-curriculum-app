@@ -76,49 +76,52 @@ const CVList: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
   }, []);
 
   return (
-      <div className="container p-5 bg-light shadow rounded mt-5">
-        <div className="row justify-content-center">
-          <div className="col-md-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <form onSubmit={(e) => handleSubmit(e)}>
-                  {message && <div className="form-group">
-                    <div className="h5 text-center">
-                      {message}
-                    </div>
-                  </div>}
-                  <p className="card-text">Quel poste avez-vous occupé ?</p>
-                  {/* Field poste */}
-                  <div className="form-floating mb-3">
-                    <input id="poste" type="text" name="poste" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)} />
-                    <label htmlFor="poste">Poste</label>
-                    {/* error */}
-                    {form.poste.error &&
-                      <div className="card-panel red accent-1">
-                        {form.poste.error}
-                      </div>}
+    <div className='container py-4'>
+    <div className="px-3 bg-light shadow rounded">
+      <div className="row justify-content-center pt-3">
+        <div className="col-md-8 col-lg-6">
+          <div className="card h-100">
+            <div className="card-body">
+              <form onSubmit={(e) => handleSubmit(e)}>
+                {message && <div className="form-group">
+                  <div className="h5 text-center">
+                    {message}
                   </div>
-                  <div className="text-center">
-                    {/* Submit button */}
-                    <button type="submit" className="btn btn-primary mt-5">Créer</button>
-                  </div>
-                </form>
-              </div>
+                </div>}
+                <p className="card-text">Quel poste avez-vous occupé ?</p>
+                {/* Field poste */}
+                <div className="form-floating mb-3">
+                  <input id="poste" type="text" name="poste" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)} />
+                  <label htmlFor="poste">Poste</label>
+                  {/* error */}
+                  {form.poste.error &&
+                    <div className="card-panel red accent-1">
+                      {form.poste.error}
+                    </div>}
+                </div>
+                <div className="text-center">
+                  {/* Submit button */}
+                  <button type="submit" className="btn btn-light mt-5">Créer</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-
-        {cvList && cvList.length > 0 && (
-          <div className="row mt-5">
-            <h2>Mes CV</h2>
-
-            {cvList.map(cv => (
-              <CVCard key={cv.id} cv={cv} />
-            ))}
-          </div>
-        )}
-
       </div>
+
+      {cvList && cvList.length > 0 && (
+        <div className="row mt-5">
+          <div className='mb-3'>
+            <h1 className='h-sonic'>Mes CV</h1>
+          </div>
+          {cvList.map(cv => (
+            <CVCard key={cv.id} cv={cv} />
+          ))}
+        </div>
+      )}
+
+    </div>
+    </div>
   );
 }
 

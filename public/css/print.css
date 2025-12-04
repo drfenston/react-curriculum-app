@@ -1,0 +1,71 @@
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact; /* Forcer l'impression des couleurs de fond */
+  }
+  .print-bg {
+    background-color: white;
+    min-height: 100vh;
+}
+    body {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    .bg-primary {
+      background-color: white !important;
+    }
+
+    .text-white {
+      color: white;
+    }
+
+    .container {
+      width: 100% !important;
+      max-width: none !important;
+    }
+  
+    /* Cacher les éléments non pertinents pour l'impression */
+    nav, .header, .footer, .sidebar {
+      display: none !important;
+    }
+  
+    /* Ajuster les éléments pour l'impression */
+    .content {
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    .profil-picture {
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: cover;
+    }
+
+    .comp-tech-icon {
+      width: 30px !important;
+      height: 30px !important;
+  }
+    /* Ajustements des titres et paragraphes */
+  h1, h2, h3, p {
+    page-break-inside: avoid !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  p {
+    font-size: 12pt !important;
+  }
+
+  .autre-icon {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+  /* Force le même comportement de page dans tous les navigateurs */
+  @page {
+    size: A4; /* Forcer la taille de page en A4 */
+    margin: 1cm; /* Uniformiser les marges */
+  }
+  }

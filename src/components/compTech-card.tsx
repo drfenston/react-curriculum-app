@@ -6,11 +6,11 @@ type Props = {
 };
 
 const CompTechCard: FunctionComponent<Props> = ({ competence, borderColor = '#009688' }) => {
-  const placeholderImage = 'https://www.cyrilmaquaire.com/curriculum/uploads/comptech_default.png'
-  const image = "https://www.cyrilmaquaire.com/curriculum/uploads/" + competence.libelle + ".png"
+  const placeholderImage = 'https://maquairecyril.com/curriculum/uploads/comptech_default.png'
+  const image = "https://maquairecyril.com/curriculum/uploads/" + competence.libelle + ".png"
   
   return (
-    <div className="col-12 col-md-4 mb-4 text-center">
+    <div className="col-12 col-lg-4 col-md-6 mb-4 text-center">
       <span className="dot bg-perso py-2 text-white mx-auto my-auto vertical-align">
         <img src={image ? image : placeholderImage} className="mx-auto d-block comp-tech-icon" alt="..." onError={({ currentTarget }) => {
           currentTarget.onerror = null; // prevents looping

@@ -122,26 +122,31 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
       </div>
 
       <div className="position-relative">
-        <ul className="nav nav-tabs border border-top-0 border-start-0 border-end-0" role="tablist">
-          <li className="nav-item" role="presentation">
-            <a className="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Profile</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab" aria-controls="simple-tabpanel-1" aria-selected="false">Compétences techniques</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Expériences</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-3" data-bs-toggle="tab" href="#simple-tabpanel-3" role="tab" aria-controls="simple-tabpanel-3" aria-selected="false">Langues</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-4" data-bs-toggle="tab" href="#simple-tabpanel-4" role="tab" aria-controls="simple-tabpanel-4" aria-selected="false">Formations</a>
-          </li>
-          <li className="nav-item" role="presentation">
-            <a className="nav-link" id="simple-tab-5" data-bs-toggle="tab" href="#simple-tabpanel-5" role="tab" aria-controls="simple-tabpanel-5" aria-selected="false">Activités</a>
-          </li>
-        </ul>
+        <div className='row'>
+          <ul className="nav nav-tabs" role="tablist">
+
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Profile</a>
+            </li>
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab" aria-controls="simple-tabpanel-1" aria-selected="false">Compétences techniques</a>
+            </li>
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Expériences</a>
+            </li>
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link" id="simple-tab-3" data-bs-toggle="tab" href="#simple-tabpanel-3" role="tab" aria-controls="simple-tabpanel-3" aria-selected="false">Langues</a>
+            </li>
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link" id="simple-tab-4" data-bs-toggle="tab" href="#simple-tabpanel-4" role="tab" aria-controls="simple-tabpanel-4" aria-selected="false">Formations</a>
+            </li>
+            <li className="nav-item col-lg-auto col-md-6 col-sm-6 col-12" role="presentation">
+              <a className="nav-link" id="simple-tab-5" data-bs-toggle="tab" href="#simple-tabpanel-5" role="tab" aria-controls="simple-tabpanel-5" aria-selected="false">Activités</a>
+            </li>
+
+          </ul>
+        </div>
+
       </div>
 
       <div className="tab-content" id="tab-content">
@@ -149,10 +154,10 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
 
           <div className="row ">
             <div className="col s12 m4 ">
-              <div className="container border border-top-0 pt-3">
+              <div className="container mt-3">
 
                 <div className="card-image">
-                  <img src={"https://www.cyrilmaquaire.com/curriculum/uploads/" + imgUrl} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
+                  <img src={"https://maquairecyril.com/curriculum/uploads/" + imgUrl} style={{ maxWidth: '100%', height: 'auto' }} className="rounded-circle mx-auto d-block profil-picture" alt="..." />
                 </div>
                 <UploadAndDisplayImage cv={cv} sendDataToParent={sendDataToParent}></UploadAndDisplayImage>
 
@@ -170,139 +175,160 @@ const CVForm: FunctionComponent<Props> = ({ cv, isEditForm }) => {
                       </div>
                     )}
                     <div className='row'>
-                      <div className="col-sm-12 col-lg-6">
-                        <div className='input-group mb-3'>
-                          <div className="form-floating mb-3">
-                            <input id="poste" name="poste" type="text" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="poste">Poste</label>
-                            {form.poste.error &&
-                              <div className="card-panel red accent-1">
-                                {form.poste.error}
-                              </div>
-                            }
+                      <div className='col-md-6 col-12'>
+                        <div className='row'>
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1">
+                              <input id="poste" name="poste" type="text" className="form-control form-control-sm" placeholder="Poste" value={form.poste.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="poste">Poste</label>
+                              {form.poste.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.poste.error}
+                                </div>
+                              }
+                            </div>
+                          </div>
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <DatePickerFloatingLabel
+                              id="debutCarriere"
+                              label="Début de carrière" // Label personnalisé
+                              initialDate={cv.debut ? new Date(cv.debut) : null} // Date initiale (peut être nulle ou une date)
+                              onDateChange={handleDebutDateChange} // Callback pour récupérer la date sélectionnée
+                            />
                           </div>
 
-                          <DatePickerFloatingLabel
-                            id="debutCarriere"
-                            label="Début de carrière" // Label personnalisé
-                            initialDate={cv.debut ? new Date(cv.debut) : null} // Date initiale (peut être nulle ou une date)
-                            onDateChange={handleDebutDateChange} // Callback pour récupérer la date sélectionnée
-                          />
-
-                        </div>
-
-                        <div className="form-floating mb-3" style={{ flexGrow: 1 }}> {/* flexGrow appliqué directement */}
-                          <textarea
-                            id="description"
-                            name="description"
-                            className="form-control form-control-sm"
-                            placeholder="Description"
-                            value={form.description.value}
-                            onChange={e => handleInputChange(e)}
-                            style={{ height: '100%' }}
-                          ></textarea>
-                          <label htmlFor="description">Description</label>
-                          {form.description.error &&
-                            <div className="card-panel red accent-1">
-                              {form.description.error}
+                          <div className='col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1" style={{ flexGrow: 1 }}> {/* flexGrow appliqué directement */}
+                              <textarea
+                                id="description"
+                                name="description"
+                                className="form-control form-control-sm"
+                                placeholder="Description"
+                                value={form.description.value}
+                                onChange={e => handleInputChange(e)}
+                                style={{ height: '100%' }}
+                              ></textarea>
+                              <label htmlFor="description">Description</label>
+                              {form.description.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.description.error}
+                                </div>
+                              }
                             </div>
-                          }
+                          </div>
                         </div>
-
                       </div>
 
-                      <div className="col-sm">
-                        <div className='input-group mb-3'>
-                          <div className="form-floating mb-3">
-                            <input id="nom" name="nom" type="text" className="form-control form-control-sm" placeholder="Nom" value={form.nom.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="nom">Nom</label>
-                            {form.nom.error &&
-                              <div className="card-panel red accent-1">
-                                {form.nom.error}
-                              </div>
-                            }
-                          </div>
-                          <div className="form-floating mb-3">
-                            <input id="prenom" type="text" name="prenom" className="form-control form-control-sm" placeholder="Prenom" value={form.prenom.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="prenom">Prenom</label>
-                            {form.prenom.error &&
-                              <div className="card-panel red accent-1">
-                                {form.prenom.error}
-                              </div>
-                            }
-                          </div>
-                        </div>
-                        <div className="form-floating mb-3">
-                          <input id="adresse1" name="adresse1" type="text" className="form-control form-control-sm" placeholder="Adresse1" value={form.adresse1.value} onChange={e => handleInputChange(e)}></input>
-                          <label htmlFor="adresse1">Adresse 1</label>
-                          {form.adresse1.error &&
-                            <div className="card-panel red accent-1">
-                              {form.adresse1.error}
+                      <div className="col-md-6 col-12">
+                        <div className='row'>
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1">
+                              <input id="nom" name="nom" type="text" className="form-control form-control-sm" placeholder="Nom" value={form.nom.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="nom">Nom</label>
+                              {form.nom.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.nom.error}
+                                </div>
+                              }
                             </div>
-                          }
-                        </div>
-
-                        <div className="form-floating mb-3">
-                          <input id="adresse2" name="adresse2" type="text" className="form-control form-control-sm" placeholder="Adresse2" value={form.adresse2.value} onChange={e => handleInputChange(e)}></input>
-                          <label htmlFor="adresse2">Adresse 2</label>
-                          {form.adresse2.error &&
-                            <div className="card-panel red accent-1">
-                              {form.adresse2.error}
-                            </div>
-                          }
-                        </div>
-                        <div className='input-group mb-3'>
-                          <div className="form-floating mb-3">
-                            <input id="zipCode" name="zipCode" type="text" className="form-control form-control-sm" placeholder="Code Postal" value={form.zipCode.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="zipCode">Code Postal</label>
-                            {form.zipCode.error &&
-                              <div className="card-panel red accent-1">
-                                {form.zipCode.error}
-                              </div>
-                            }
                           </div>
 
-                          <div className="form-floating mb-3">
-                            <input id="city" name="city" type="text" className="form-control form-control-sm" placeholder="Ville" value={form.city.value} onChange={e => handleInputChange(e)}></input>
-                            <label htmlFor="city">Ville</label>
-                            {form.city.error &&
-                              <div className="card-panel red accent-1">
-                                {form.city.error}
-                              </div>
-                            }
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <div className="form-floating mb-3">
+                              <input id="prenom" type="text" name="prenom" className="form-control form-control-sm" placeholder="Prenom" value={form.prenom.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="prenom">Prenom</label>
+                              {form.prenom.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.prenom.error}
+                                </div>
+                              }
+                            </div>
+                          </div>
+                        </div>
+                        <div className='row'>
+                          <div className='col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1">
+                              <input id="adresse1" name="adresse1" type="text" className="form-control form-control-sm" placeholder="Adresse1" value={form.adresse1.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="adresse1">Adresse 1</label>
+                              {form.adresse1.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.adresse1.error}
+                                </div>
+                              }
+                            </div>
+
+                            <div className="form-floating mb-1">
+                              <input id="adresse2" name="adresse2" type="text" className="form-control form-control-sm" placeholder="Adresse2" value={form.adresse2.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="adresse2">Adresse 2</label>
+                              {form.adresse2.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.adresse2.error}
+                                </div>
+                              }
+                            </div>
+                          </div></div>
+                        <div className='row'>
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1">
+                              <input id="zipCode" name="zipCode" type="text" className="form-control form-control-sm" placeholder="Code Postal" value={form.zipCode.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="zipCode">Code Postal</label>
+                              {form.zipCode.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.zipCode.error}
+                                </div>
+                              }
+                            </div>
+                          </div>
+                          <div className='col-md-6 col-12 px-1 pb-1'>
+                            <div className="form-floating mb-1">
+                              <input id="city" name="city" type="text" className="form-control form-control-sm" placeholder="Ville" value={form.city.value} onChange={e => handleInputChange(e)}></input>
+                              <label htmlFor="city">Ville</label>
+                              {form.city.error &&
+                                <div className="card-panel red accent-1">
+                                  {form.city.error}
+                                </div>
+                              }
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className='input-group mb-3'>
-                      <div className="form-floating mb-3">
-                        <input id="telephone" type="text" name="telephone" className="form-control form-control-sm" placeholder="Téléphone" value={form.telephone.value} onChange={e => handleInputChange(e)}></input>
-                        <label htmlFor="telephone">Téléphone</label>
-                        {form.telephone.error &&
-                          <div className="card-panel red accent-1">
-                            {form.telephone.error}
-                          </div>
-                        }
+
+                    <div className='row my-3'>
+                      <div className='col-md-4 col-12 px-1 pb-1'>
+                        <div className="form-floating mb-1">
+                          <input id="telephone" type="text" name="telephone" className="form-control form-control-sm" placeholder="Téléphone" value={form.telephone.value} onChange={e => handleInputChange(e)}></input>
+                          <label htmlFor="telephone">Téléphone</label>
+                          {form.telephone.error &&
+                            <div className="card-panel red accent-1">
+                              {form.telephone.error}
+                            </div>
+                          }
+                        </div>
                       </div>
 
-                      <div className="form-floating mb-3">
-                        <input id="mail" name="mail" type="text" className="form-control form-control-sm" placeholder="Adresse Email" value={form.mail.value} onChange={e => handleInputChange(e)}></input>
-                        <label htmlFor="mail">Adresse Email</label>
-                        {form.mail.error &&
-                          <div className="card-panel red accent-1">
-                            {form.mail.error}
-                          </div>
-                        }
+                      <div className='col-md-4 col-12 px-1 pb-1'>
+                        <div className="form-floating mb-1">
+                          <input id="mail" name="mail" type="text" className="form-control form-control-sm" placeholder="Adresse Email" value={form.mail.value} onChange={e => handleInputChange(e)}></input>
+                          <label htmlFor="mail">Adresse Email</label>
+                          {form.mail.error &&
+                            <div className="card-panel red accent-1">
+                              {form.mail.error}
+                            </div>
+                          }
+                        </div>
                       </div>
 
-                      <div className="form-floating mb-3">
-                        <input id="website" name="website" type="text" className="form-control form-control-sm" placeholder="Site web" value={form.website.value} onChange={e => handleInputChange(e)}></input>
-                        <label htmlFor="website">Site Web</label>
-                        {form.website.error &&
-                          <div className="card-panel red accent-1">
-                            {form.website.error}
-                          </div>
-                        }
+                      <div className='col-md-4 col-12 px-1 pb-1'>
+                        <div className="form-floating mb-1">
+                          <input id="website" name="website" type="text" className="form-control form-control-sm" placeholder="Site web" value={form.website.value} onChange={e => handleInputChange(e)}></input>
+                          <label htmlFor="website">Site Web</label>
+                          {form.website.error &&
+                            <div className="card-panel red accent-1">
+                              {form.website.error}
+                            </div>
+                          }
+                        </div>
                       </div>
                     </div>
                   </div>
